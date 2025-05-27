@@ -1,0 +1,32 @@
+:focus-visible {
+	/* Appearance */
+	outline: 2px dotted orangered;
+	outline-offset: 0.5rem;
+	border-radius: 0.125rem;
+}
+
+::selection {
+	/* Appearance */
+	background-color: rgb(from darkslategray r g b / 0.8);
+	color: white;
+}
+
+body {
+	/* Typography */
+	font-family: peridot-pe-variable, sans-serif;
+	font-style: normal;
+	line-height: 1.5;
+}
+
+a {
+	color: black;
+	text-decoration: underline 0.25rem solid orange;
+	transition:
+		color 0.2s ease-in-out,
+		text-decoration-color 0.2s ease-in-out;
+
+	&:hover {
+		color: orange;
+		text-decoration-color: black;
+	}
+}

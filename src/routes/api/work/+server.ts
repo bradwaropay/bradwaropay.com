@@ -37,5 +37,3 @@ export async function GET({ url }: RequestEvent) {
 	const limitedWorks = limit ? selectedWork.slice(0, parseInt(limit)) : selectedWork;
 	return json(limitedWorks);
 }
-
-export const prerender = true;

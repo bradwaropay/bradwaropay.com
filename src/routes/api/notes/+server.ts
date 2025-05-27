@@ -35,5 +35,3 @@ export async function GET({ url }: RequestEvent) {
 	const limitedNotes = limit ? notes.slice(0, parseInt(limit)) : notes;
 	return json(limitedNotes);
 }
-
-export const prerender = true;

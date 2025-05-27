@@ -1,12 +1,12 @@
 <script>
 	import Container from '../Container/Container.svelte';
-	import Content from '../Content/Content.svelte';
+	import Portrait from '$lib/images/about-portrait.webp';
 </script>
 
 <header class="about-header">
 	<Container>
 		<div class="portrait-container">
-			<img src="src/lib/images/about-photo.webp" alt="Brad Waropay" class="portrait" />
+			<img src={Portrait} alt="Brad Waropay Portrait" class="portrait" />
 		</div>
 		<h1 class="title">
 			Hi, I'm<br /><span class="name">Brad<br /> Waropay</span>
@@ -74,21 +74,18 @@
 		z-index: -1;
 		justify-self: center;
 		position: relative;
+		width: 100%;
+		max-width: 20rem;
 
 		@media (min-width: 50rem) {
 			justify-self: end;
+			max-width: 25rem;
 		}
 	}
 
 	.portrait {
 		border-radius: 50%;
-		width: 100%;
-		max-width: 20rem;
 		aspect-ratio: 1/1;
 		mix-blend-mode: overlay;
-
-		@media (min-width: 50rem) {
-			max-width: 25rem;
-		}
 	}
 </style>

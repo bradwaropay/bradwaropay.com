@@ -35,20 +35,40 @@
 			product as seamless and enjoyable as using it.
 		</p>
 		<IconLinkList className="social-links" links={socialLinks} />
-		<SiteLink label="More about me" href="/about" className="section-link" />
+		<SiteLink label="More about me" href="/about" invert className="section-link" />
 	</Container>
 </section>
 
 <style>
 	.intro-section {
+		position: relative;
 		background:
-			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E"),
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E"),
 			url($lib/images/intro-bg.webp) no-repeat center bottom / cover;
 		padding: clamp(4rem, 1.333rem + 8.889vw, 8rem) 0;
-		position: relative;
+		overflow: hidden;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: skewY(8deg);
+			z-index: 1;
+			background-color: rgb(0 0 0 / 0.6875);
+			width: 100%;
+			height: 90%;
+			content: '';
+		}
+
 		:global {
+			.container {
+				position: relative;
+				z-index: 2;
+			}
+
 			.social-links {
 				margin-top: 4rem;
+				color: orange;
 			}
 
 			.section-link {
@@ -62,25 +82,37 @@
 			}
 		}
 	}
-
 	.heading {
-		font-family: 'glodok', sans-serif;
-		font-size: clamp(2rem, 0.667rem + 4.444vw, 4rem);
+		margin: 0;
+		color: white;
 		font-style: normal;
 		font-weight: 400;
-		margin: 0;
+		font-size: 2rem;
+		font-family: 'glodok', sans-serif;
+
+		@media (min-width: 50rem) {
+			font-size: 4rem;
+		}
 	}
 
 	.heading-name {
-		color: orangered;
 		display: block;
-		font-size: clamp(3.5rem, 1.167rem + 7.778vw, 7rem);
+		color: orangered;
+		font-size: 3.5rem;
+
+		@media (min-width: 50rem) {
+			font-size: 7rem;
+		}
 	}
 
 	.description {
-		font-size: clamp(1.25rem, 0.917rem + 1.111vw, 1.75rem);
-		font-variation-settings: var(--font-variation-medium);
 		margin-top: 2rem;
 		max-width: 50ch;
+		color: white;
+		font-size: 1.25rem;
+		font-variation-settings: var(--font-variation-medium);
+		@media (min-width: 50rem) {
+			font-size: 1.75rem;
+		}
 	}
 </style>

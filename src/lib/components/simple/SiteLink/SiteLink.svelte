@@ -3,13 +3,14 @@
 		href: string;
 		label: string;
 		className?: string;
+		invert?: boolean;
 		withoutArrows?: boolean;
 	}
 
-	const { href, label, className, withoutArrows }: Props = $props();
+	const { href, label, className, invert, withoutArrows }: Props = $props();
 </script>
 
-<a class="site-link {className}" {href}>
+<a class="site-link {invert ? 'inverted' : ''} {className}" {href}>
 	{label}
 	{#if !withoutArrows}
 		»{/if}
@@ -44,6 +45,13 @@
 		&:active {
 			&::before {
 				height: 1em;
+			}
+		}
+
+		&.inverted {
+			color: orange;
+			&::before {
+				background-color: black;
 			}
 		}
 	}

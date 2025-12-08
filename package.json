@@ -62,6 +62,7 @@
 	},
 	"dependencies": {
 		"@tabler/icons-svelte": "^3.31.0",
-		"mdsvex": "^0.12.6"
+		"mdsvex": "^0.12.6",
+		"simplex-noise": "^4.0.3"
 	}
 }

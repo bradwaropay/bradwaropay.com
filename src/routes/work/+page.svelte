@@ -1,14 +1,13 @@
 <script lang="ts">
-	import Container from '$lib/components/simple/Container/Container.svelte';
-	import WorkCardList from '$lib/components/compound/WorkCardList/WorkCardList.svelte';
-	import PageTitle from '$lib/components/simple/PageTitle/PageTitle.svelte';
+	import Container from '$lib/components/Frames/Container/Container.svelte';
+	import WorkCardList from '$lib/components/Structures/WorkCardList/WorkCardList.svelte';
+	import PageTitle from '$lib/components/cleanup/PageTitle/PageTitle.svelte';
 	const { data } = $props();
 </script>
 
 <div class="work-page">
 	<Container>
 		<PageTitle title="Work" />
-
 		<WorkCardList work={data.work} />
 	</Container>
 </div>

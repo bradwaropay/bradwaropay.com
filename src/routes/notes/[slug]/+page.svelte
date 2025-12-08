@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Container from '$lib/components/simple/Container/Container.svelte';
-	import Content from '$lib/components/simple/Content/Content.svelte';
-	import NoteHeader from '$lib/components/simple/NoteHeader/NoteHeader.svelte';
+	import Container from '$lib/components/Frames/Container/Container.svelte';
+	import Content from '$lib/components/Frames/Content/Content.svelte';
+	import NoteHeader from '$lib/components/cleanup/NoteHeader/NoteHeader.svelte';
 
 	const { data } = $props();
 </script>

@@ -1,35 +1,69 @@
-<script>
-	import AboutHeader from '$lib/components/simple/AboutHeader/AboutHeader.svelte';
-	import ClientList from '$lib/components/compound/ClientList/ClientList.svelte';
-	import Container from '$lib/components/simple/Container/Container.svelte';
-	import Content from '$lib/components/simple/Content/Content.svelte';
+<script lang="ts">
+	import IntroHero from '$lib/components/Fixtures/IntroHero/IntroHero.svelte';
+	import ClientList from '$lib/components/cleanup/ClientList/ClientList.svelte';
+	import Container from '$lib/components/Frames/Container/Container.svelte';
+	import Content from '$lib/components/Frames/Content/Content.svelte';
+	import { onMount, onDestroy } from 'svelte';
+	import About from '$lib/content/About.svx';
+
+	let belowIntroSection = false;
+	let introSectionElement: HTMLElement;
+
+	function checkScrollPosition() {
+		if (!introSectionElement) return;
+
+		const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+		const offset = rootFontSize * 6;
+		const introSectionBottom = introSectionElement.offsetTop + introSectionElement.offsetHeight;
+		const scrollPosition = window.scrollY || window.pageYOffset;
+
+		belowIntroSection = scrollPosition + offset > introSectionBottom;
+	}
+
+	onMount(() => {
+		checkScrollPosition();
+		window.addEventListener('scroll', checkScrollPosition);
+		window.addEventListener('resize', checkScrollPosition);
+	});
+
+	onDestroy(() => {
+		if (typeof window !== 'undefined') {
+			window.removeEventListener('scroll', checkScrollPosition);
+			window.removeEventListener('resize', checkScrollPosition);
+		}
+	});
 </script>
 
 <div class="about-page">
-	<AboutHeader />
+	<IntroHero bind:element={introSectionElement} />
 	<Container>
-		<Content className="about-content">
-			<p>
-				I craft clean, intuitive interfaces and seamless experiences that not only feel great to use
-				but are also satisfying to build with. Drawing on over 15 years of experience across a
-				variety of industries, I help companies large and small establish and implement effective UX
-				and DX patterns. With expertise in both design and development, I create thoughtful,
-				scalable systems that help teams move quickly without compromising on quality.
-			</p>
+		<Content>
+			<About />
+			<!-- {#snippet aside()}
+				<AboutPortrait hasLinks={belowIntroSection} />
+			{/snippet} -->
 		</Content>
-		<ClientList className="clients" />
+		<ClientList />
 	</Container>
 </div>
 
 <style>
 	.about-page {
 		:global {
-			.about-content {
-				margin-top: 4rem;
+			.intro-section + .container {
+				margin-top: var(--spacing-lg);
 			}
+			/* 
+			.about-portrait {
+				--about-portrait-top: var(--spacing-xl);
 
-			.clients {
-				margin-top: 4rem;
+				position: sticky;
+				top: var(--about-portrait-top);
+				margin-top: calc(var(--about-portrait-top) * -1);
+			} */
+
+			.client-list {
+				margin-top: var(--spacing-xl);
 			}
 		}
 	}

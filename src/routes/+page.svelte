@@ -1,20 +1,30 @@
 <script lang="ts">
-	import HomeSection from '$lib/components/compound/HomeSection/HomeSection.svelte';
-	import IntroSection from '$lib/components/compound/IntroSection/IntroSection.svelte';
-	import NoteCardList from '$lib/components/compound/NoteCardList/NoteCardList.svelte';
-	import WorkCardList from '$lib/components/compound/WorkCardList/WorkCardList.svelte';
+	import TitledSection from '$lib/components/Frames/TitledSection/TitledSection.svelte';
+	import IntroHero from '$lib/components/Fixtures/IntroHero/IntroHero.svelte';
+	import NoteCardList from '$lib/components/Structures/NoteCardList/NoteCardList.svelte';
+	import WorkCardList from '$lib/components/Structures/WorkCardList/WorkCardList.svelte';
 
 	const { data } = $props();
 </script>
 
-<IntroSection />
+<IntroHero hasLink />
 {#if !!data.notes.length}
-	<HomeSection title="Latest Notes" linkLabel="Previous notes" linkHref="/notes">
+	<TitledSection title="Latest Notes" link={{ label: 'Previous notes', href: '/notes' }}>
 		<NoteCardList notes={data.notes} />
-	</HomeSection>
+	</TitledSection>
 {/if}
 {#if !!data.work.length}
-	<HomeSection title="Select Work" linkLabel="Addtional work" linkHref="/work">
+	<TitledSection title="Select Work" link={{ label: 'Addtional work', href: '/work' }}>
 		<WorkCardList work={data.work} />
-	</HomeSection>
+	</TitledSection>
 {/if}
+
+<style>
+	:global {
+		.intro-section {
+			& + .titled-section {
+				margin-top: var(--spacing-macro-lg);
+			}
+		}
+	}
+</style>

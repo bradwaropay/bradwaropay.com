@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Container from '$lib/components/simple/Container/Container.svelte';
-	import NoteCardList from '$lib/components/compound/NoteCardList/NoteCardList.svelte';
-	import PageTitle from '$lib/components/simple/PageTitle/PageTitle.svelte';
+	import Container from '$lib/components/Frames/Container/Container.svelte';
+	import NoteCardList from '$lib/components/Structures/NoteCardList/NoteCardList.svelte';
+	import PageTitle from '$lib/components/cleanup/PageTitle/PageTitle.svelte';
 
 	const { data } = $props();
 </script>

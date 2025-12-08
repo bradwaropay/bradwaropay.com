@@ -24,6 +24,10 @@ declare global {
 		clientLink?: string;
 		selected: boolean;
 	}
+
+	declare module "*.svx" {
+		export { SvelteComponentDev as default } from "svelte/internal";
+	}
 }
 
 export {};

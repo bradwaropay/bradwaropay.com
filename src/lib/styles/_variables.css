@@ -29,10 +29,11 @@
 
 	/** Backgrounds **/
 	--background-texture: url($lib/images/texture.svg);
+	--background-texture-fixed: var(--background-texture) fixed;
 	--background-topography: url($lib/images/topography.svg) center/50rem repeat;
 	--background-topography-fixed: var(--background-topography) fixed;
 	--background-texture-topography: var(--background-texture), var(--background-topography);
-	--background-texture-topography-fixed: var(--background-texture), var(--background-topography-fixed);
+	--background-texture-topography-fixed: var(--background-texture-fixed), var(--background-topography-fixed);
 
 	/** Borders **/
 	/* Radii */
@@ -55,29 +56,11 @@
 	--spacing-micro-thick: 1rem;
 	
 	/* Macro */
-	--spacing-macro-xs: 1rem;
+	--spacing-macro-xs: 1.5rem;
 	--spacing-macro-sm: 2rem;
 	--spacing-macro-md: 3rem;
 	--spacing-macro-lg: 5rem;
 	--spacing-macro-xl: 8rem;
-
-	/** Layout **/
-	/* Gutters */
-	--layout-gutter-min: var(--spacing-macro-sm);
-	--layout-gutter-max: var(--spacing-macro-lg);
-
-	/* Widths */
-	--layout-width-minimum: 30rem;
-	--layout-width-minimum-with-gutters: calc(var(--layout-width-minimum) + (var(--layout-gutter-min) * 2));
-	--layout-width-content: 50rem;
-	--layout-width-content-with-gutters: calc(var(--layout-width-content) + (var(--layout-gutter-max) * 2));
-	--layout-width-container: 75rem;
-	--layout-width-container-with-gutters: calc(var(--layout-width-container) + (var(--layout-gutter-max) * 2));
-
-	/** Breakpoints **/
-	--breakpoint-minimum: var(--layout-width-minimum-with-gutters);
-	--breakpoint-content: var(--layout-width-content-with-gutters);
-	--breakpoint-container: var(--layout-width-container-with-gutters);
 
 	/** Typography **/
 	/* Families */
@@ -85,30 +68,31 @@
 	--font-accent: 'Glodok', sans-serif;
 
 	/* Variations */
-	/* For Peridot only */
+	/* For Primary only */
 	--font-variation-regular: 'ital' 0, 'wdth' 100, 'wght' 400;
 	--font-variation-semi-bold: 'ital' 0, 'wdth' 100, 'wght' 600;
 	--font-variation-bold: 'ital' 0, 'wdth' 100, 'wght' 800;
-	--font-variation-black: 'ital' 0, 'wdth' 100, 'wght' 950;
+	--font-variation-black: 'ital' 0, 'wdth' 100, 'wght' 900;
+	--font-variation-heavy: 'ital' 0, 'wdth' 100, 'wght' 950;
 
 	/* Weights */
-	/* For Glodok only */
+	/* For Accent only */
 	--font-weight-regular: 400;
 
 	/** Body **/
 	/* Sizes */
-	--font-body-size-xs: 0.75rem;
-	--font-body-size-sm: 1rem;
-	--font-body-size-md: 1.25rem;
-	--font-body-size-lg: 1.5rem;
-	--font-body-size-xl: 1.75rem;
-
+	--font-text-size-xs: 0.875rem;
+	--font-text-size-sm: 1rem;
+	--font-text-size-md: 1.25rem;
+	--font-text-size-lg: 1.5rem;
+	--font-text-size-xl: 1.75rem;
+ 
 	/* Line height */
-	--font-body-line-height: 1.5;
+	--font-text-line-height: 1.5;
 
 	/** Heading **/
 	/* Sizes */
-	--font-heading-size-xs: 1.75rem;
+	--font-heading-size-xs: 2rem;
 	--font-heading-size-sm: 2.5rem;
 	--font-heading-size-md: 3.5rem;
 	--font-heading-size-lg: 5rem;
@@ -120,7 +104,7 @@
 	/** Icons **/
 	/* Sizes */
 	--icon-size-xs: 1.5rem;
-	--icon-size-sm: 1.75rem;
+	--icon-size-sm: 2rem;
 	--icon-size-md: 2.5rem;
 	--icon-size-lg: 3.5rem;
 	--icon-size-xl: 5rem;

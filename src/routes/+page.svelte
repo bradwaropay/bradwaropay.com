@@ -7,22 +7,25 @@
 	const { data } = $props();
 </script>
 
-<IntroHero hasLink />
-{#if !!data.notes.length}
-	<TitledSection title="Latest Notes" link={{ label: 'Previous notes', href: '/notes' }}>
-		<NoteCardList notes={data.notes} />
-	</TitledSection>
-{/if}
-{#if !!data.work.length}
-	<TitledSection title="Select Work" link={{ label: 'Addtional work', href: '/work' }}>
-		<WorkCardList work={data.work} />
-	</TitledSection>
-{/if}
+<div class="home-page">
+	<IntroHero hasLink />
+	{#if !!data.notes.length}
+		<TitledSection title="Latest Notes" link={{ label: 'Previous notes', href: '/notes' }}>
+			<NoteCardList notes={data.notes} />
+		</TitledSection>
+	{/if}
+	{#if !!data.work.length}
+		<TitledSection title="Select Work" link={{ label: 'Addtional work', href: '/work' }}>
+			<WorkCardList work={data.work} />
+		</TitledSection>
+	{/if}
+</div>
 
-<style>
-	:global {
-		.intro-section {
-			& + .titled-section {
+<style lang="scss">
+	// TODO: Looking into better page layout solutions
+	.home-page {
+		:global(.intro-hero) {
+			& + :global(.titled-section) {
 				margin-top: var(--spacing-macro-lg);
 			}
 		}

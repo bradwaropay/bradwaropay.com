@@ -12,7 +12,7 @@
 </script>
 
 <a class="icon-link {className}" {href} target="_blank" aria-label={label}
-	><IconComponent stroke="0.09375em" /></a
+	><IconComponent stroke="0.09375rem" /></a
 >
 
 <style>

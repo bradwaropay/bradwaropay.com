@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CardTitle from '../../Simple/CardTitle/CardTitle.svelte';
+	import CardTitle from '$lib/components/Simple/CardTitle/CardTitle.svelte';
 
 	interface Props extends Work {
 		className?: string;
@@ -23,59 +23,69 @@
 				{/if}
 			</p>
 		</hgroup>
-		<p class="description">{description}</p>
+		<p class="description">{@html description}</p>
 	</div>
 </article>
 
-<style>
+<style lang="scss">
 	.work-article {
 		display: grid;
 		grid-template-columns: 1fr;
 		align-items: start;
-		gap: var(--spacing-macro-sm);
+		gap: var(--spacing-macro-sm) var(--spacing-macro-md);
 
-		/* TODO: Update this to use the new breakpoints */
-		@media (min-width: 67.5rem) {
-			grid-template-columns: 1fr 1.5fr;
+		@media (min-width: $breakpointMaximum) {
+			grid-template-columns: 5fr 7fr;
 		}
 	}
 
 	.image-link {
 		display: block;
-	}
-
-	.image {
-		transition: opacity var(--motion-duration-short) ease-in-out;
-		aspect-ratio: 3/2;
-		width: 100%;
-		object-fit: cover;
-		object-position: center;
-
-		/* TODO: Update this to use the new breakpoints */
-		@media (min-width: 67.5rem) {
-			aspect-ratio: 1/1;
-		}
+		overflow: hidden;
 
 		&:hover,
 		&:focus,
 		&:active {
-			opacity: 0.75;
+			.image {
+				transform: scale(1.025);
+			}
 		}
 	}
 
-	.details {
-		border-left: var(--border-width-slim) solid var(--color-page-contrast);
-		padding-left: var(--spacing-macro-sm);
-		max-width: 60ch;
-		font-size: var(--font-body-size-md);
+	.image {
+		transition: transform var(--motion-duration-short) ease-in-out;
+		aspect-ratio: 4/3;
+		width: 100%;
+		object-fit: cover;
+		object-position: center;
+
+		@media (min-width: $breakpointMaximum) {
+			aspect-ratio: 1/1;
+			width: 100%;
+		}
 	}
 
 	.client {
 		margin-top: var(--spacing-micro-slim);
+		font-size: slopeIntercept(
+			var(--font-text-size-md),
+			var(--font-text-size-lg),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
+		line-height: var(--font-heading-line-height);
 		font-variation-settings: var(--font-variation-semi-bold);
 	}
 
+	// TODO: Consider using Content component for description
 	.description {
 		margin-top: var(--spacing-macro-xs);
+		max-width: $layoutWidthContent;
+		font-size: slopeIntercept(
+			var(--font-text-size-md),
+			var(--font-text-size-lg),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
 	}
 </style>

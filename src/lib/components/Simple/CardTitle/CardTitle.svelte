@@ -14,10 +14,16 @@
 	</a>
 </h3>
 
-<style>
+<style lang="scss">
 	.title {
 		width: fit-content;
-		font-variation-settings: var(--font-variation-semi-bold);
+		font-size: slopeIntercept(
+			var(--font-heading-size-xs),
+			var(--font-heading-size-sm),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
+		font-variation-settings: var(--font-variation-bold);
 	}
 
 	.link {
@@ -27,18 +33,13 @@
 			text-underline-offset var(--motion-duration-short) ease-in-out;
 		transition-behavior: allow-discrete;
 		color: var(--color-interaction);
-		font-size: var(--font-heading-size-xs);
+
 		text-decoration-line: none;
 		text-decoration-style: solid;
 		text-decoration-color: transparent;
 		text-decoration-thickness: 0.5em;
 		text-decoration-skip-ink: none;
 		text-underline-offset: -0.5em;
-
-		/* TODO: Align breakpoint with content */
-		@media (min-width: 37.5rem) {
-			font-size: var(--font-heading-size-sm);
-		}
 
 		&:hover,
 		&:focus,

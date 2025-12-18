@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CardTitle from '../../Simple/CardTitle/CardTitle.svelte';
+	import CardTitle from '$lib/components/Simple/CardTitle/CardTitle.svelte';
 
 	interface Props extends Note {
 		className?: string;
@@ -9,30 +9,43 @@
 </script>
 
 <article class="note-card {className}">
-	<a href={`/notes/${slug}`}>
+	<a href={`/notes/${slug}`} class="image-link">
 		<img class="image" src={image} alt={title} />
 	</a>
 	<time class="date">{updatedAt ?? createdAt}</time>
 	<CardTitle href={`/notes/${slug}`} {title} className="title" />
 </article>
 
-<style>
-	.image {
-		transition: opacity 0.2s ease-in-out;
-		aspect-ratio: 2/1;
-		width: 100%;
-		object-fit: cover;
-		object-position: center;
+<style lang="scss">
+	.image-link {
+		display: block;
+		overflow: hidden;
 
 		&:hover,
 		&:focus,
 		&:active {
-			opacity: 0.75;
+			.image {
+				transform: scale(1.025);
+			}
 		}
+	}
+
+	.image {
+		transition: transform 0.2s ease-in-out;
+		aspect-ratio: 9/5;
+		width: 100%;
+		object-fit: cover;
+		object-position: center;
 	}
 
 	.date {
 		display: block;
 		justify-self: end;
+		font-size: slopeIntercept(
+			var(--font-text-size-sm),
+			var(--font-text-size-md),
+			$breakpointMaximum,
+			$breakpointContainer
+		);
 	}
 </style>

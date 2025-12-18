@@ -16,13 +16,13 @@
 	</hgroup>
 </header>
 
-<style>
+<style lang="scss">
 	.note-header {
-		border-top: 1px solid gainsboro;
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 0 3rem;
 		align-items: center;
+		gap: 0 3rem;
+		border-top: 1px solid gainsboro;
 		padding-top: 4rem;
 
 		:global {
@@ -31,13 +31,13 @@
 			}
 		}
 
-		@media (min-width: 67.5rem) {
+		@media (min-width: $breakpointContent) {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
 
 	.heading-group {
-		@media (min-width: 67.5rem) {
+		@media (min-width: $breakpointContent) {
 			order: -1;
 		}
 	}
@@ -50,11 +50,11 @@
 			'wdth' 100,
 			'wght' 800;
 
-		@media (min-width: 50rem) {
+		@media (min-width: $breakpointContent) {
 			font-size: var(--font-heading-size-lg);
 		}
 
-		@media (min-width: 67.5rem) {
+		@media (min-width: $breakpointContent) {
 			margin-top: 0;
 		}
 	}
@@ -63,7 +63,7 @@
 		display: block;
 		justify-self: end;
 
-		@media (min-width: 67.5rem) {
+		@media (min-width: $breakpointContent) {
 			justify-self: unset;
 		}
 	}
@@ -71,7 +71,7 @@
 	.image {
 		align-self: start;
 		aspect-ratio: 2 / 1;
-		object-fit: cover;
 		width: 100%;
+		object-fit: cover;
 	}
 </style>

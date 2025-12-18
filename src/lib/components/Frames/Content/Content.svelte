@@ -13,30 +13,31 @@
 	{@render children?.()}
 </div>
 
-<style>
+<style lang="scss">
 	.content {
-		max-width: var(--layout-width-content);
-		font-size: var(--font-body-size-md);
-		line-height: var(--font-body-line-height);
+		max-width: $layoutWidthContent;
+		font-size: slopeIntercept(
+			var(--font-text-size-md),
+			var(--font-text-size-lg),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
+		line-height: var(--font-text-line-height);
 
-		@media (min-width: 50rem) {
-			font-size: var(--font-body-size-lg);
-		}
-
-		/* Temporary content styling */
-		:global {
-			> * + * {
-				margin-top: var(--spacing-md);
+		> {
+			:global(*) + :global(*) {
+				margin-top: var(--spacing-macro-md);
 			}
 
-			> h2 {
-				margin-top: var(--spacing-xl);
-				font-size: calc(1em * 1.5);
-				line-height: var(--font-heading-line-height);
-				font-variation-settings: var(--font-variation-bold);
+			:global(h2),
+			:global(h3),
+			:global(h4),
+			:global(h5),
+			:global(h6) {
+				margin-top: var(--spacing-macro-lg);
 
-				& + * {
-					margin-top: var(--spacing-sm);
+				& + :global(*) {
+					margin-top: var(--spacing-micro-thick);
 				}
 			}
 		}

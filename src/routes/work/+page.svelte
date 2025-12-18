@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Container from '$lib/components/Frames/Container/Container.svelte';
 	import WorkCardList from '$lib/components/Structures/WorkCardList/WorkCardList.svelte';
-	import PageTitle from '$lib/components/cleanup/PageTitle/PageTitle.svelte';
+	import PageTitle from '$lib/components/Simple/PageTitle/PageTitle.svelte';
 	const { data } = $props();
 </script>
 

@@ -25,10 +25,7 @@
 		color: black;
 		font-size: 1.5rem;
 		line-height: 1.5;
-		font-variation-settings:
-			'ital' 0,
-			'wdth' 100,
-			'wght' 950;
+		font-variation-settings: var(--font-variation-heavy);
 		text-decoration: none;
 
 		/* TODO: Change this to text-decoration */

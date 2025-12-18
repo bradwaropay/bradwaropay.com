@@ -21,16 +21,21 @@
 	</ul>
 {/if}
 
-<style>
+<style lang="scss">
 	.note-card-list {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: var(--spacing-macro-lg);
+		gap: var(--spacing-macro-lg)
+			slopeIntercept(
+				var(--spacing-macro-md),
+				var(--spacing-macro-lg),
+				$breakpointMaximum,
+				$breakpointContainer
+			);
 		padding: 0;
 		list-style: none;
 
-		/* TODO: Update this to use the new breakpoints */
-		@media (min-width: 67.5rem) {
+		@media (min-width: $breakpointMaximum) {
 			grid-template-columns: 1fr 1fr;
 		}
 	}

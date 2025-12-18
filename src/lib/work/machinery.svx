@@ -1,11 +1,9 @@
 ---
 createdAt: '2025-05-22'
-image: 'https://placehold.co/600x600'
+image: '/src/lib/images/work/machinery.webp'
 title: 'Machinery: A Design System Methodology'
-client: gooeylogic
-description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus enim deserunt dolorem beatae repellat laboriosam perspiciatis, accusantium impedit consequatur, nisi explicabo. Amet consectetur adipisicing elit quo voluptatum accusantium, deserunt repellendus perspiciatis ullam dolorem.'
+client: 'Personal Project'
+description: "Inspired by <a href='https://atomicdesign.bradfrost.com/'>Brad Frost's Atomic Design</a>, this approach reimagines components as machines, with clear parts and assembly rather than atomic metaphors. It takes a holistic approach to design and development, providing practical guidance for the real-world challenges and cross-disciplinary problems that don't fit neatly into the traditional atomic framework."
 selected: true
 published: true
 ---
-
-# Building bradwaropay.com

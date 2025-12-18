@@ -1,11 +1,11 @@
 /* Reset */
-@import url('./_reset.css');
+@import url('$lib/styles/_reset.css');
 
 /* Fonts */
 @import url('https://use.typekit.net/upf6zkz.css');
 
 /* Vars */
-@import url('./_vars.css');
+@import url('$lib/styles/_variables.css');
 
 /* Global */
-@import url('./_global.css');
+@import url('$lib/styles/_global.css');

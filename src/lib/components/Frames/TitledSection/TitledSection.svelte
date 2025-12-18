@@ -29,38 +29,32 @@
 	</Container>
 </section>
 
-<style>
+<style lang="scss">
 	.titled-section {
 		:global {
 			& + .titled-section {
-				margin-top: var(--spacing-macro-xl);
+				margin-top: var(--spacing-macro-lg);
 			}
 		}
 
 		&.titled-section--has-link {
 			:global {
-				& + .titled-section {
-					margin-top: var(--spacing-macro-md);
-				}
-
 				.link {
 					justify-self: end;
-					margin-top: var(--spacing-macro-md);
+					margin-top: var(--spacing-macro-lg);
 				}
 			}
 		}
 	}
 
 	.title {
-		border-bottom: var(--border-width-hairline) solid var(--color-page-neutral);
-		padding-bottom: var(--spacing-micro-thick);
-		font-size: var(--font-heading-size-sm);
-		font-variation-settings: var(--font-variation-bold);
-
-		/* TODO: Align breakpoint with content */
-		@media (min-width: 37.5rem) {
-			font-size: var(--font-heading-size-md);
-		}
+		font-size: slopeIntercept(
+			var(--font-heading-size-sm),
+			var(--font-heading-size-md),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
+		font-variation-settings: var(--font-variation-black);
 
 		& + :global(*) {
 			margin-top: var(--spacing-macro-lg);

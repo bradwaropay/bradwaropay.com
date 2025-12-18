@@ -1,11 +1,9 @@
 ---
 createdAt: '2025-05-22'
-image: 'https://placehold.co/600x600'
+image: '/src/lib/images/work/buildingbradwaropaycom.webp'
 title: 'Building bradwaropay.com'
-client: Personal Project
-description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus enim deserunt dolorem beatae repellat laboriosam perspiciatis, accusantium impedit consequatur, nisi explicabo. Amet consectetur adipisicing elit quo voluptatum accusantium, deserunt repellendus perspiciatis ullam dolorem.'
+client: 'Personal Project'
+description: "A detailed look at how I built my personal site from start to finish, walking through the strategic thinking, design decisions, and development steps that shaped the project and showing how I approach building digital products."
 selected: true
 published: true
 ---
-
-# Building bradwaropay.com

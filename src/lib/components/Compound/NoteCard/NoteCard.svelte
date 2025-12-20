@@ -17,6 +17,11 @@
 </article>
 
 <style lang="scss">
+	.note-card {
+		:global(.title) {
+			margin-top: var(--spacing-micro-slim);
+		}
+	}
 	.image-link {
 		display: block;
 		overflow: hidden;

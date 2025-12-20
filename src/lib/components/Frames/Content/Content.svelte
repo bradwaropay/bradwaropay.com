@@ -26,18 +26,45 @@
 
 		> {
 			:global(*) + :global(*) {
-				margin-top: var(--spacing-macro-md);
+				margin-top: var(--spacing-macro-sm);
 			}
 
-			:global(h2),
-			:global(h3),
-			:global(h4),
-			:global(h5),
-			:global(h6) {
-				margin-top: var(--spacing-macro-lg);
+			:global(h1),
+			:global(h2) {
+				&:not(:first-child) {
+					margin-top: var(--spacing-macro-lg);
+				}
 
 				& + :global(*) {
-					margin-top: var(--spacing-micro-thick);
+					margin-top: var(--spacing-macro-sm);
+				}
+			}
+
+			:global(h2) {
+				font-size: slopeIntercept(
+					var(--font-heading-size-sm),
+					var(--font-heading-size-md),
+					$breakpointMinimum,
+					$breakpointContainer
+				);
+				font-variation-settings: var(--font-variation-black);
+			}
+
+			:global(h3) {
+				font-size: slopeIntercept(
+					var(--font-heading-size-xs),
+					var(--font-heading-size-sm),
+					$breakpointMinimum,
+					$breakpointContainer
+				);
+				font-variation-settings: var(--font-variation-bold);
+
+				&:not(:first-child) {
+					margin-top: var(--spacing-macro-md);
+				}
+
+				& + :global(*) {
+					margin-top: var(--spacing-macro-xs);
 				}
 			}
 		}

@@ -36,23 +36,42 @@
 	];
 </script>
 
-<Container element="section" class="client-list {className}">
-	<h2 class="heading">{@html title}</h2>
-	<ul class="list">
-		{#each ClientLogos as ClientLogo}
-			<li class="list-item">
-				<ClientLogo />
-			</li>
-		{/each}
-	</ul>
-	<Content>
-		<p class="cta">{@html cta}</p>
-	</Content>
-</Container>
+<section class="client-list {className}">
+	<Container>
+		<ul class="list">
+			{#each ClientLogos as ClientLogo}
+				<li class="list-item">
+					<ClientLogo />
+				</li>
+			{/each}
+		</ul>
+	</Container>
+</section>
 
 <style lang="scss">
+	.client-list {
+		$full-bleed-inset: max(
+			slopeIntercept(
+				$layoutGutterContainerMin,
+				$layoutGutterContainerMax,
+				$breakpointMinimum,
+				$breakpointContainer
+			),
+			calc((100vw - 85rem) / 2)
+		);
+
+		margin-right: calc((100vw - $full-bleed-inset - 100%) * -1);
+		margin-left: calc($full-bleed-inset * -1);
+		background: var(--background-texture);
+	}
+
 	.heading {
-		font-size: var(--font-heading-size-sm);
+		font-size: slopeIntercept(
+			var(--font-heading-size-xs),
+			var(--font-heading-size-sm),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
 		font-variation-settings: var(--font-variation-bold);
 	}
 
@@ -60,24 +79,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		align-items: center;
-		gap: 2rem 3rem;
-		margin-top: var(--spacing-micro-thick);
-		border-top: 1px solid var(--color-page-neutral);
-		padding: 3rem 0 0;
+		gap: var(--spacing-macro-lg) var(--spacing-macro-xl);
+		padding: var(--spacing-macro-md) 0;
 		list-style: none;
-
-		@media (min-width: $breakpointContent) {
-			gap: 3rem 6rem;
-		}
 	}
 
 	.list-item {
 		flex-basis: 10rem;
-	}
-
-	.cta {
-		margin-top: 6rem;
-		font-variation-settings: var(--font-variation-semi-bold);
 	}
 </style>

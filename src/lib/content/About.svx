@@ -1,46 +1,41 @@
 <script>
     import { IconAccessible, IconAffiliate, IconBlocks, IconGavel } from '@tabler/icons-svelte';
-    import BlockLink from '$lib/components/Simple/BlockLink/BlockLink.svelte';
+    import BlockLinkList from '$lib/components/Compound/BlockLinkList/BlockLinkList.svelte';
     import IconHeading from '$lib/components/Simple/IconHeading/IconHeading.svelte';
 </script>
 
-## What I Do
+## Let's Build Something
 
 I'm a DesignOps and Design Systems leader with 15+ years bridging design, engineering, and product. I build systems and processes that help teams move faster, collaborate more effectively, and deliver cohesive, inclusive experiences at scale.
 
 I work with teams at any stage of design maturity, from exploring an initial design system to taking what they already have to the next level. I specialize in shaping operations that work for teams, not against them, so they can focus on their craft and solve real problems.
 
-<BlockLink
-    label="Set up a discovery call"
-    href="#"
-    withoutArrows
-    className="discovery-link"
+
+<BlockLinkList
+    wrap
+    links={[
+        { label: 'Set up a discovery call', href: '#' },
+        { label: 'Send me a message', href: '#' }
+    ]}
 />
+
 
 ## How I Can Help
 
 Most engagements start with understanding what's broken - I assess your current state, identify the real problems, and create a strategic plan. From there, I design the frameworks and architecture you need, setting your team up to execute confidently.
 
-<IconHeading icon={IconGavel}>
-    Design Systems and Governance
-</IconHeading>
+### Design Systems and Governance
 
 Build new design systems or assess existing ones, design governance frameworks that enable rather than block, and create strategic roadmaps that guide teams toward adoption and scale.
 
-<IconHeading icon={IconAffiliate}>
-    Cross-functional Operations
-</IconHeading>
+### Cross-functional Operations
 
 Optimize design-to-development workflows, eliminate operational friction, and build processes that help teams move faster without sacrificing quality.
 
-<IconHeading icon={IconBlocks}>
-    Component Architecture
-</IconHeading>
+### Component Architecture
 
 Architect scalable component systems, plan technical consolidations, and provide strategic guidance on building foundations that actually work for your team.
 
-<IconHeading icon={IconAccessible}>
-    Inclusive Design and Accessibility
-</IconHeading>
+### Inclusive Design and Accessibility
 
 Audit accessibility gaps, establish accessible component standards, and create frameworks that make inclusive design the default rather than an afterthought.

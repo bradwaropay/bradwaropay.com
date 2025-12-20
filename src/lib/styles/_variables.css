@@ -8,7 +8,9 @@
 	--color-palette-orangered: orangered;
 	--color-palette-orange: orange;
 	--color-palette-dodgerblue: dodgerblue;
-
+	--color-palette-chocolate: chocolate;
+	--color-palette-seagreen: seagreen;
+	--color-palette-slateblue: slateblue;
 	/* Page */
 	--color-page: var(--color-palette-white);
 	--color-page-neutral: var(--color-palette-gainsboro);

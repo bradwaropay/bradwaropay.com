@@ -27,6 +27,7 @@ h6 {
 
 a {
 	color: var(--color-content);
+	font-variation-settings: var(--font-variation-semi-bold);
 	text-decoration: underline 0.175em solid var(--color-interaction-accent);
 	transition:
 		color 0.2s ease-in-out,

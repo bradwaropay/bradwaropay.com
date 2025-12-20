@@ -17,13 +17,6 @@
 <style lang="scss">
 	.title {
 		width: fit-content;
-		font-size: slopeIntercept(
-			var(--font-heading-size-xs),
-			var(--font-heading-size-sm),
-			$breakpointMinimum,
-			$breakpointContainer
-		);
-		font-variation-settings: var(--font-variation-bold);
 	}
 
 	.link {
@@ -33,6 +26,13 @@
 			text-underline-offset var(--motion-duration-short) ease-in-out;
 		transition-behavior: allow-discrete;
 		color: var(--color-interaction);
+		font-size: slopeIntercept(
+			var(--font-heading-size-xs),
+			var(--font-heading-size-sm),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
+		font-variation-settings: var(--font-variation-bold);
 
 		text-decoration-line: none;
 		text-decoration-style: solid;

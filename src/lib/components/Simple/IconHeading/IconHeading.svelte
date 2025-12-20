@@ -22,23 +22,37 @@
 	.icon-heading {
 		display: flex;
 		align-items: center;
-		gap: var(--spacing-micro-thick);
-		border-bottom: var(--border-width-hairline) solid var(--color-page-neutral);
-		padding-bottom: var(--spacing-micro-thick);
-		font-size: var(--font-heading-size-xs);
+		gap: var(--spacing-micro-slim);
+		font-size: slopeIntercept(
+			var(--font-text-size-md),
+			var(--font-text-size-xl),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
+
+		&:not(:first-child) {
+			margin-top: var(--spacing-macro-md);
+		}
 
 		:global(.icon) {
-			box-sizing: content-box;
-			background-color: var(--color-content-accent);
-			padding: var(--spacing-micro-thin);
 			aspect-ratio: 1/1;
-			min-width: var(--icon-size-md);
-			min-height: var(--icon-size-md);
-			color: var(--color-content-contrast);
+			min-width: slopeIntercept(
+				var(--icon-size-sm),
+				var(--icon-size-md),
+				$breakpointMinimum,
+				$breakpointContainer
+			);
+			min-height: slopeIntercept(
+				var(--icon-size-sm),
+				var(--icon-size-md),
+				$breakpointMinimum,
+				$breakpointContainer
+			);
+			color: var(--color-content-accent);
 		}
 
 		+ :global(*) {
-			margin-top: var(--spacing-micro-slim);
+			margin-top: var(--spacing-micro-xs);
 		}
 	}
 

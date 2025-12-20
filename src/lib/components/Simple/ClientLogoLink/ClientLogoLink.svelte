@@ -16,13 +16,12 @@
 
 <style>
 	.client-logo-link {
-		filter: grayscale(100%);
-		opacity: 0.5;
-		transition: filter 0.2s ease-in-out, opacity 0.2s ease-in-out;
+		:global(svg) {
+			transition: transform 0.2s ease-in-out;
+		}
 
-		&:hover {
-			filter: grayscale(0%);
-			opacity: 1;
+		&:hover :global(svg) {
+			transform: scale(1.05);
 		}
 	}
 </style>

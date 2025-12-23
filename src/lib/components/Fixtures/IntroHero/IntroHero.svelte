@@ -80,7 +80,7 @@
 		position: relative;
 		font-weight: var(--font-weight-regular);
 		font-size: slopeIntercept(
-			calc(var(--font-heading-size-md) / 1.675),
+			calc((var(--font-heading-size-lg) / 1.675) * 0.875),
 			calc(var(--font-heading-size-xl) / 1.675),
 			$breakpointMinimum,
 			$breakpointContainer
@@ -93,7 +93,7 @@
 		display: block;
 		color: var(--color-content-accent);
 		font-size: slopeIntercept(
-			var(--font-heading-size-md),
+			calc(var(--font-heading-size-lg) * 0.875),
 			var(--font-heading-size-xl),
 			$breakpointMinimum,
 			$breakpointContainer
@@ -105,10 +105,10 @@
 		display: inline-block;
 		position: relative;
 		transform: rotate(-1.5deg);
-		margin-top: var(--spacing-macro-md);
+		margin-top: var(--spacing-macro-sm);
 		color: black;
 		font-size: slopeIntercept(
-			calc(var(--font-text-size-md)),
+			calc(var(--font-text-size-lg) * 0.875),
 			calc(var(--font-text-size-xl)),
 			$breakpointMinimum,
 			$breakpointContainer

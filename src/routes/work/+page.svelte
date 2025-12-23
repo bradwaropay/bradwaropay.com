@@ -13,17 +13,4 @@
 </div>
 
 <style>
-	.work-page {
-		:global {
-			.page-title {
-				& + .empty-message {
-					margin-top: 3rem;
-				}
-
-				& + .work-card-list {
-					margin-top: 5rem;
-				}
-			}
-		}
-	}
 </style>

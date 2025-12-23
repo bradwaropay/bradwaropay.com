@@ -1,41 +1,72 @@
 <script>
-    import { IconAccessible, IconAffiliate, IconBlocks, IconGavel } from '@tabler/icons-svelte';
     import BlockLinkList from '$lib/components/Compound/BlockLinkList/BlockLinkList.svelte';
-    import IconHeading from '$lib/components/Simple/IconHeading/IconHeading.svelte';
+    import AboutClients from '$lib/components/Fixtures/AboutClients/AboutClients.svelte';
+    import FullBleed from '$lib/components/Frames/FullBleed/FullBleed.svelte';
+    import Container from '$lib/components/Frames/Container/Container.svelte';
+    import Content from '$lib/components/Frames/Content/Content.svelte';
+    import { IconAccessible, IconAffiliate, IconBlocks, IconGavel,  } from '@tabler/icons-svelte';
+    import IconTitledEntry from '$lib/components/Compound/IconTitledEntry/IconTitledEntry.svelte';
 </script>
 
-## Let's Build Something
+## Let's Create!
 
-I'm a DesignOps and Design Systems leader with 15+ years bridging design, engineering, and product. I build systems and processes that help teams move faster, collaborate more effectively, and deliver cohesive, inclusive experiences at scale.
+I'm a DesignOps and Design Systems leader with 15+ years bridging design, engineering, and
+product. I build systems and processes that help teams move faster, collaborate more
+effectively, and deliver cohesive, inclusive experiences at scale.
 
-I work with teams at any stage of design maturity, from exploring an initial design system to taking what they already have to the next level. I specialize in shaping operations that work for teams, not against them, so they can focus on their craft and solve real problems.
-
+I work with teams at any stage of design maturity, from exploring an initial design system
+to taking what they already have to the next level. I specialize in shaping operations that
+work for teams, not against them, so they can focus on their craft and solve real problems.
 
 <BlockLinkList
     wrap
     links={[
         { label: 'Set up a discovery call', href: '#' },
-        { label: 'Send me a message', href: '#' }
+        { label: 'Send me a message', href: 'mailto:brad.waropay@gmail.com' }
     ]}
 />
 
 
-## How I Can Help
+### I've worked with&hellip;
+
+<AboutClients />
+
+## How Can I Help?
 
 Most engagements start with understanding what's broken - I assess your current state, identify the real problems, and create a strategic plan. From there, I design the frameworks and architecture you need, setting your team up to execute confidently.
 
-### Design Systems and Governance
+### I specialize in&hellip;
 
-Build new design systems or assess existing ones, design governance frameworks that enable rather than block, and create strategic roadmaps that guide teams toward adoption and scale.
+<FullBleed class="specialties">
+    <Container>
+        <IconTitledEntry icon={IconGavel} heading="Design Systems and Governance">
+            Build new design systems or assess existing ones, design governance frameworks that enable rather than block, and create strategic roadmaps that guide teams toward adoption and scale.
+        </IconTitledEntry>
+        <IconTitledEntry icon={IconAffiliate} heading="Cross-functional Operations" className="specialty">
+            Optimize design-to-development workflows, eliminate operational friction, and build processes that help teams move faster without sacrificing quality.
+        </IconTitledEntry>
+        <IconTitledEntry icon={IconBlocks} heading="Component Architecture">
+            Architect scalable component systems, plan technical consolidations, and provide strategic guidance on building foundations that actually work for your team.
+        </IconTitledEntry>
+        <IconTitledEntry icon={IconAccessible} heading="Inclusive Design and Accessibility" className="specialty">
+            Audit accessibility gaps, establish accessible component standards, and create frameworks that make inclusive design the default rather than an afterthought.
+        </IconTitledEntry>
+    </Container>
+</FullBleed>
 
-### Cross-functional Operations
+**Want to work together?** Set up a <a href="#">discovery call</a> or send me an <a href="mailto:brad.waropay@gmail.com">email</a>.
 
-Optimize design-to-development workflows, eliminate operational friction, and build processes that help teams move faster without sacrificing quality.
+<style lang="scss">
+    :global(.specialties) {
+        background: var(--background-texture-topography);
+        padding: var(--spacing-macro-lg) 0;
+    }
 
-### Component Architecture
+    :global(.icon-titled-entry + .icon-titled-entry) {
+        margin-top: var(--spacing-macro-md);
+    }
 
-Architect scalable component systems, plan technical consolidations, and provide strategic guidance on building foundations that actually work for your team.
-
-### Inclusive Design and Accessibility
-
-Audit accessibility gaps, establish accessible component standards, and create frameworks that make inclusive design the default rather than an afterthought.
+   :global(.specialty) {
+        justify-self: end;
+    }
+</style>

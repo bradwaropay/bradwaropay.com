@@ -29,8 +29,12 @@
 				margin-top: var(--spacing-macro-sm);
 			}
 
-			:global(h1),
-			:global(h2) {
+			:global(p > strong) {
+				font-variation-settings: var(--font-variation-bold);
+			}
+
+			:global(h2),
+			:global(h3) {
 				&:not(:first-child) {
 					margin-top: var(--spacing-macro-lg);
 				}
@@ -42,8 +46,8 @@
 
 			:global(h2) {
 				font-size: slopeIntercept(
-					var(--font-heading-size-sm),
 					var(--font-heading-size-md),
+					var(--font-heading-size-lg),
 					$breakpointMinimum,
 					$breakpointContainer
 				);
@@ -52,12 +56,22 @@
 
 			:global(h3) {
 				font-size: slopeIntercept(
+					var(--font-heading-size-sm),
+					var(--font-heading-size-md),
+					$breakpointMinimum,
+					$breakpointContainer
+				);
+				font-variation-settings: var(--font-variation-bold);
+			}
+
+			:global(h4) {
+				font-size: slopeIntercept(
 					var(--font-heading-size-xs),
 					var(--font-heading-size-sm),
 					$breakpointMinimum,
 					$breakpointContainer
 				);
-				font-variation-settings: var(--font-variation-bold);
+				font-variation-settings: var(--font-variation-semi-bold);
 
 				&:not(:first-child) {
 					margin-top: var(--spacing-macro-md);

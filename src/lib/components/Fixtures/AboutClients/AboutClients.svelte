@@ -8,9 +8,9 @@
 	import ClientLogoLinkHonorHealth from '$lib/components/Simple/ClientLogoLink/Clients/ClientLogoLinkHonorHealth.svelte';
 	import ClientLogoLinkMeltmedia from '$lib/components/Simple/ClientLogoLink/Clients/ClientLogoLinkMeltmedia.svelte';
 	import ClientLogoLinkTheDyrt from '$lib/components/Simple/ClientLogoLink/Clients/ClientLogoLinkTheDyrt.svelte';
-	import Content from '$lib/components/Frames/Content/Content.svelte';
 	import ClientLogoLinkMicrochip from '$lib/components/Simple/ClientLogoLink/Clients/ClientLogoLinkMicrochip.svelte';
 	import Container from '$lib/components/Frames/Container/Container.svelte';
+	import FullBleed from '$lib/components/Frames/FullBleed/FullBleed.svelte';
 
 	interface Props {
 		className?: string;
@@ -36,43 +36,25 @@
 	];
 </script>
 
-<section class="client-list {className}">
-	<Container>
-		<ul class="list">
-			{#each ClientLogos as ClientLogo}
-				<li class="list-item">
-					<ClientLogo />
-				</li>
-			{/each}
-		</ul>
-	</Container>
-</section>
+<div class="client-list">
+	<FullBleed>
+		<Container>
+			<ul class="list">
+				{#each ClientLogos as ClientLogo}
+					<li class="list-item">
+						<ClientLogo />
+					</li>
+				{/each}
+			</ul>
+		</Container>
+	</FullBleed>
+</div>
 
 <style lang="scss">
 	.client-list {
-		$full-bleed-inset: max(
-			slopeIntercept(
-				$layoutGutterContainerMin,
-				$layoutGutterContainerMax,
-				$breakpointMinimum,
-				$breakpointContainer
-			),
-			calc((100vw - 85rem) / 2)
-		);
-
-		margin-right: calc((100vw - $full-bleed-inset - 100%) * -1);
-		margin-left: calc($full-bleed-inset * -1);
-		background: var(--background-texture);
-	}
-
-	.heading {
-		font-size: slopeIntercept(
-			var(--font-heading-size-xs),
-			var(--font-heading-size-sm),
-			$breakpointMinimum,
-			$breakpointContainer
-		);
-		font-variation-settings: var(--font-variation-bold);
+		:global(.full-bleed) {
+			background: var(--background-texture-topography);
+		}
 	}
 
 	.list {
@@ -80,7 +62,7 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: var(--spacing-macro-lg) var(--spacing-macro-xl);
-		padding: var(--spacing-macro-md) 0;
+		padding: var(--spacing-macro-lg) 0;
 		list-style: none;
 	}
 

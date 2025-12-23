@@ -49,8 +49,8 @@
 
 	.title {
 		font-size: slopeIntercept(
-			var(--font-heading-size-sm),
 			var(--font-heading-size-md),
+			var(--font-heading-size-lg),
 			$breakpointMinimum,
 			$breakpointContainer
 		);

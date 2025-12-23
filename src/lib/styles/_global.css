@@ -1,3 +1,9 @@
+@property --scrollbar-width {
+	syntax: "";
+	inherits: true;
+	inital-value: 0;
+}
+
 :focus-visible {
 	outline: var(--border-width-fine) dotted var(--color-content-accent);
 	outline-offset: var(--spacing-micro-slim);
@@ -9,7 +15,13 @@
 	color: var(--color-content-contrast);
 }
 
+html {
+	container-type: inline-size;
+}
+
 body {
+	--scrollbar-width: calc(100vw - 100cqw);
+
 	font-family: var(--font-primary);
 	font-variation-settings: var(--font-variation-regular);
 	line-height: var(--font-text-line-height);

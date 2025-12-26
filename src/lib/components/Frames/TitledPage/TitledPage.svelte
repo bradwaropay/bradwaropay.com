@@ -20,6 +20,6 @@
 
 <style lang="scss">
 	.titled-page {
-		padding-top: var(--spacing-macro-sm);
+		padding-top: var(--spacing-macro-md);
 	}
 </style>

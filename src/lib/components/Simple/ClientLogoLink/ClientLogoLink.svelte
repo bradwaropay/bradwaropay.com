@@ -14,13 +14,16 @@
 	{@render children()}
 </a>
 
-<style>
+<style lang="scss">
 	.client-logo-link {
 		:global(svg) {
+			display: inline-block;
 			transition: transform 0.2s ease-in-out;
 		}
 
-		&:hover :global(svg) {
+		&:hover :global(svg),
+		&:focus :global(svg),
+		&:active :global(svg) {
 			transform: scale(1.05);
 		}
 	}

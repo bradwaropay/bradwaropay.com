@@ -11,16 +11,12 @@
 	import ClientLogoLinkMicrochip from '$lib/components/Simple/ClientLogoLink/Clients/ClientLogoLinkMicrochip.svelte';
 	import Container from '$lib/components/Frames/Container/Container.svelte';
 	import FullBleed from '$lib/components/Frames/FullBleed/FullBleed.svelte';
+	import ClientLogoLinkScholastic from '$lib/components/Simple/ClientLogoLink/Clients/ClientLogoLinkScholastic.svelte';
+	import ClientLogoLinkTysonFoods from '$lib/components/Simple/ClientLogoLink/Clients/ClientLogoLinkTysonFoods.svelte';
 
 	interface Props {
 		className?: string;
 	}
-
-	const { className }: Props = $props();
-
-	const title = "I've worked with&hellip;";
-	const cta =
-		'Want to work together? Send me an <a href="mailto:brad.waropay@gmail.com">email</a> or reachout on <a href="https://bsky.app/profile/bradwaropay.dev" target="_blank">BlueSky</a>.';
 
 	const ClientLogos = [
 		ClientLogoLinkAbbvie,
@@ -32,7 +28,9 @@
 		ClientLogoLinkGenentech,
 		ClientLogoLinkHonorHealth,
 		ClientLogoLinkMeltmedia,
-		ClientLogoLinkMicrochip
+		ClientLogoLinkMicrochip,
+		ClientLogoLinkScholastic,
+		ClientLogoLinkTysonFoods
 	];
 </script>
 
@@ -61,12 +59,18 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: var(--spacing-macro-lg) var(--spacing-macro-xl);
+		gap: var(--spacing-macro-lg)
+			slopeIntercept(
+				var(--spacing-macro-lg),
+				var(--spacing-macro-xl),
+				$breakpointMinimum,
+				$breakpointContainer
+			);
 		padding: var(--spacing-macro-lg) 0;
 		list-style: none;
 	}
 
 	.list-item {
-		flex-basis: 10rem;
+		max-width: slopeIntercept(9rem, 12rem, $breakpointMinimum, $breakpointContainer);
 	}
 </style>

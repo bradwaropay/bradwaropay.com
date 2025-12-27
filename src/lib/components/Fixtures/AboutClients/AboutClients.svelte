@@ -71,6 +71,6 @@
 	}
 
 	.list-item {
-		max-width: slopeIntercept(9rem, 12rem, $breakpointMinimum, $breakpointContainer);
+		flex-basis: slopeIntercept(8rem, 13rem, $breakpointMinimum, $breakpointContainer);
 	}
 </style>

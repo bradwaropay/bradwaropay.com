@@ -25,8 +25,7 @@
 			),
 			calc((100vw - $breakpointContainer) / 2)
 		);
-
-		margin-right: calc((100vw - (var(--scrollbar-width) / 2) - $full-bleed-inset - 100%) * -1);
+		margin-right: calc((100vw - var(--scrollbar-width) - $full-bleed-inset - 100%) * -1);
 		margin-left: calc($full-bleed-inset * -1);
 	}
 </style>

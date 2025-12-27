@@ -1,9 +1,7 @@
 <script>
     import BlockLinkList from '$lib/components/Compound/BlockLinkList/BlockLinkList.svelte';
-    import AboutClients from '$lib/components/Fixtures/AboutClients/AboutClients.svelte';
-    import FullBleed from '$lib/components/Frames/FullBleed/FullBleed.svelte';
-    import Container from '$lib/components/Frames/Container/Container.svelte';
-    import Content from '$lib/components/Frames/Content/Content.svelte';
+    import AboutClients from '$lib/components/Fixtures/AboutClients/AboutClients.svelte';   
+    import StaggeredContent from '$lib/components/Frames/StaggeredContent/StaggeredContent.svelte';
     import { IconAccessible, IconAffiliate, IconBlocks, IconGavel,  } from '@tabler/icons-svelte';
     import IconTitledEntry from '$lib/components/Compound/IconTitledEntry/IconTitledEntry.svelte';
 </script>
@@ -37,36 +35,19 @@ Most engagements start with understanding what's broken - I assess your current 
 
 ### I specialize in&hellip;
 
-<FullBleed class="specialties">
-    <Container>
-        <IconTitledEntry icon={IconGavel} heading="Design Systems and Governance">
-            Build new design systems or assess existing ones, design governance frameworks that enable rather than block, and create strategic roadmaps that guide teams toward adoption and scale.
-        </IconTitledEntry>
-        <IconTitledEntry icon={IconAffiliate} heading="Cross-functional Operations" className="specialty">
-            Optimize design-to-development workflows, eliminate operational friction, and build processes that help teams move faster without sacrificing quality.
-        </IconTitledEntry>
-        <IconTitledEntry icon={IconBlocks} heading="Component Architecture">
-            Architect scalable component systems, plan technical consolidations, and provide strategic guidance on building foundations that actually work for your team.
-        </IconTitledEntry>
-        <IconTitledEntry icon={IconAccessible} heading="Inclusive Design and Accessibility" className="specialty">
-            Audit accessibility gaps, establish accessible component standards, and create frameworks that make inclusive design the default rather than an afterthought.
-        </IconTitledEntry>
-    </Container>
-</FullBleed>
+<StaggeredContent withBackground>
+    <IconTitledEntry icon={IconGavel} heading="Design Systems and Governance">
+        Build new design systems or assess existing ones, design governance frameworks that enable rather than block, and create strategic roadmaps that guide teams toward adoption and scale.
+    </IconTitledEntry>
+    <IconTitledEntry icon={IconAffiliate} heading="Cross-functional Operations" >
+        Optimize design-to-development workflows, eliminate operational friction, and build processes that help teams move faster without sacrificing quality.
+    </IconTitledEntry>
+    <IconTitledEntry icon={IconBlocks} heading="Component Architecture">
+        Architect scalable component systems, plan technical consolidations, and provide strategic guidance on building foundations that actually work for your team.
+    </IconTitledEntry>
+    <IconTitledEntry icon={IconAccessible} heading="Inclusive Design and Accessibility" >
+        Audit accessibility gaps, establish accessible component standards, and create frameworks that make inclusive design the default rather than an afterthought.
+    </IconTitledEntry>
+</StaggeredContent>
 
 **Want to work together?** Set up a <a href="#">discovery call</a> or send me an <a href="mailto:brad.waropay@gmail.com">email</a>.
-
-<style lang="scss">
-    :global(.specialties) {
-        background: var(--background-texture-topography);
-        padding: var(--spacing-macro-lg) 0;
-    }
-
-    :global(.icon-titled-entry + .icon-titled-entry) {
-        margin-top: var(--spacing-macro-md);
-    }
-
-   :global(.specialty) {
-        justify-self: end;
-    }
-</style>

@@ -3,6 +3,7 @@
 	/* Palette */
 	--color-palette-black: black;
 	--color-palette-dimgray: dimgray;
+	--color-palette-lightgray: lightgray;
 	--color-palette-gainsboro: gainsboro;
 	--color-palette-white: white;
 	--color-palette-orangered: orangered;
@@ -30,6 +31,7 @@
 	--color-interaction-contrast: var(--color-palette-white);
 
 	/** Backgrounds **/
+	--background-diagonal-lines: url($lib/images/diagonal-lines.svg);
 	--background-texture: url($lib/images/texture.svg);
 	--background-texture-fixed: var(--background-texture) fixed;
 	--background-topography: url($lib/images/topography.svg) center/50rem repeat;

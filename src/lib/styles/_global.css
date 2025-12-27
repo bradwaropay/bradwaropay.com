@@ -37,6 +37,10 @@ h6 {
 	line-height: var(--font-heading-line-height);
 }
 
+strong {
+	font-variation-settings: var(--font-variation-bold);
+}
+
 a {
 	color: var(--color-content);
 	font-variation-settings: var(--font-variation-semi-bold);

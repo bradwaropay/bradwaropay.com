@@ -26,7 +26,7 @@
 	.staggered-content {
 		&--with-background {
 			:global(.full-bleed) {
-				background: var(--background-texture-topography);
+				background: var(--background-diagonal-lines);
 				padding: var(--spacing-macro-lg) 0;
 			}
 		}

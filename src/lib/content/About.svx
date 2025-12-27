@@ -4,6 +4,9 @@
     import StaggeredContent from '$lib/components/Frames/StaggeredContent/StaggeredContent.svelte';
     import { IconAccessible, IconAffiliate, IconBlocks, IconGavel,  } from '@tabler/icons-svelte';
     import IconTitledEntry from '$lib/components/Compound/IconTitledEntry/IconTitledEntry.svelte';
+    import ContactTagline from '$lib/components/Simple/ContactTagline/ContactTagline.svelte';
+    import FullBleed from '$lib/components/Frames/FullBleed/FullBleed.svelte';
+    import Container from '$lib/components/Frames/Container/Container.svelte';
 </script>
 
 ## Let's Create!
@@ -50,4 +53,9 @@ Most engagements start with understanding what's broken - I assess your current 
     </IconTitledEntry>
 </StaggeredContent>
 
-**Want to work together?** Set up a <a href="#">discovery call</a> or send me an <a href="mailto:brad.waropay@gmail.com">email</a>.
+
+<FullBleed>
+    <Container>
+        <ContactTagline />
+    </Container>
+</FullBleed>

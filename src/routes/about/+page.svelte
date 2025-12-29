@@ -6,7 +6,7 @@
 </script>
 
 <div class="about-page">
-	<IntroHero />
+	<IntroHero link={{ label: "What I'm working on", href: '/' }} />
 	<Container>
 		<Content>
 			<About />

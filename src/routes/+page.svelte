@@ -8,7 +8,7 @@
 </script>
 
 <div class="home-page">
-	<IntroHero hasLink />
+	<IntroHero link={{ label: "Let's work together", href: '/about' }} />
 	{#if !!data.notes.length}
 		<TitledSection title="Latest Notes" link={{ label: 'Previous notes', href: '/notes' }}>
 			<NoteCardList notes={data.notes} />

@@ -15,6 +15,7 @@
 
 <style lang="scss">
 	.content {
+		width: 100%;
 		max-width: $layoutWidthContent;
 		font-size: slopeIntercept(
 			var(--font-text-size-md),

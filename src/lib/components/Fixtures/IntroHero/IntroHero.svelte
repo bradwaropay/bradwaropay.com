@@ -6,11 +6,14 @@
 
 	interface Props {
 		class?: string;
-		hasLink?: boolean;
+		link?: {
+			label: string;
+			href: string;
+		};
 		element?: HTMLElement;
 	}
 
-	let { class: className, hasLink, element = $bindable() }: Props = $props();
+	let { class: className, link, element = $bindable() }: Props = $props();
 </script>
 
 <section bind:this={element} class="intro-hero {className}">
@@ -24,8 +27,8 @@
 			</span>
 		</p>
 		<SocialLinks className="social-links" />
-		{#if hasLink}
-			<BlockLink className="link" label="Let's work together" href="/about" />
+		{#if link}
+			<BlockLink className="link" label={link.label} href={link.href} />
 		{/if}
 		<BlobPortrait />
 	</Container>

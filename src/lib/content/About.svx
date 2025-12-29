@@ -34,7 +34,7 @@ work for teams, not against them, so they can focus on their craft and solve rea
 
 ## How Can I Help?
 
-Most engagements start with understanding what's broken - I assess your current state, identify the real problems, and create a strategic plan. From there, I design the frameworks and architecture you need, setting your team up to execute confidently.
+Most engagements start with understanding what's broken. I assess your current state, identify the real problems, and create a strategic plan to get you on the right track. From there, I design the processes, frameworks, and architecture you need, setting your team up to execute confidently.
 
 ### I specialize in&hellip;
 
@@ -46,10 +46,10 @@ Most engagements start with understanding what's broken - I assess your current 
         Optimize design-to-development workflows, eliminate operational friction, and build processes that help teams move faster without sacrificing quality.
     </IconTitledEntry>
     <IconTitledEntry icon={IconBlocks} heading="Component Architecture">
-        Architect scalable component systems, plan technical consolidations, and provide strategic guidance on building foundations that actually work for your team.
+        Design scalable component systems, plan technical consolidations, and provide strategic guidance on building foundations that actually work for your team.
     </IconTitledEntry>
     <IconTitledEntry icon={IconAccessible} heading="Inclusive Design and Accessibility" >
-        Audit accessibility gaps, establish accessible component standards, and create frameworks that make inclusive design the default rather than an afterthought.
+        Audit accessibility gaps and establish accessible component standards that make inclusive design the default rather than an afterthought.
     </IconTitledEntry>
 </StaggeredContent>
 

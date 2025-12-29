@@ -27,8 +27,8 @@
 		transition-behavior: allow-discrete;
 		color: var(--color-interaction);
 		font-size: slopeIntercept(
-			var(--font-heading-size-xs),
 			var(--font-heading-size-sm),
+			var(--font-heading-size-md),
 			$breakpointMinimum,
 			$breakpointContainer
 		);

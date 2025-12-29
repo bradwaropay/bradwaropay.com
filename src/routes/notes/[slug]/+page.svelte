@@ -6,9 +6,17 @@
 	const { data } = $props();
 </script>
 
-<Container element="article">
-	<NoteHeader image={data.meta.image} date={data.meta.createdAt} title={data.meta.title} />
+<NoteHeader image={data.meta.image} date={data.meta.createdAt} title={data.meta.title} />
+<Container>
 	<Content>
 		{@render data.content()}
 	</Content>
 </Container>
+
+<style>
+	:global(.note-header) {
+		+ :global(.container) {
+			margin-top: var(--spacing-macro-md);
+		}
+	}
+</style>

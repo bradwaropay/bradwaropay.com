@@ -1,4 +1,7 @@
 <script lang="ts">
+	import Container from '$lib/components/Frames/Container/Container.svelte';
+	import FullBleed from '$lib/components/Frames/FullBleed/FullBleed.svelte';
+
 	interface Props {
 		image: string;
 		date: string;
@@ -8,70 +11,58 @@
 	const { image, date, title }: Props = $props();
 </script>
 
-<header class="note-header">
-	<img src={image} alt={title} class="image" />
-	<hgroup class="heading-group">
+<header class="note-header" style="--image: url({image})">
+	<Container>
+		<FullBleed class="background">
+			<Container>
+				<img src={image} alt={title} class="image" />
+			</Container>
+		</FullBleed>
 		<time class="date">{date}</time>
 		<h1 class="heading">{title}</h1>
-	</hgroup>
+	</Container>
 </header>
 
 <style lang="scss">
 	.note-header {
-		display: grid;
-		grid-template-columns: 1fr;
-		align-items: center;
-		gap: 0 3rem;
-		border-top: 1px solid gainsboro;
-		padding-top: 4rem;
-
-		:global {
-			& + * {
-				margin-top: var(--spacing-xl);
-			}
-		}
-
-		@media (min-width: $breakpointContent) {
-			grid-template-columns: 1fr 1fr;
-		}
+		width: 100%;
 	}
 
-	.heading-group {
-		@media (min-width: $breakpointContent) {
-			order: -1;
-		}
+	:global(.background) {
+		background: var(--background-diagonal-lines);
 	}
 
-	.heading {
-		margin-top: 2rem;
-		font-size: var(--font-heading-size-md);
-		font-variation-settings:
-			'ital' 0,
-			'wdth' 100,
-			'wght' 800;
+	.image {
+		transition: aspect-ratio var(--motion-duration-short) ease-in-out;
+		aspect-ratio: 9 / 5;
+		width: 100%;
+		object-fit: cover;
 
-		@media (min-width: $breakpointContent) {
-			font-size: var(--font-heading-size-lg);
-		}
-
-		@media (min-width: $breakpointContent) {
-			margin-top: 0;
+		@media (min-width: $breakpointMaximum) {
+			aspect-ratio: 4 / 1;
 		}
 	}
 
 	.date {
 		display: block;
 		justify-self: end;
-
-		@media (min-width: $breakpointContent) {
-			justify-self: unset;
-		}
+		margin-top: var(--spacing-micro-slim);
+		font-size: slopeIntercept(
+			var(--font-text-size-sm),
+			var(--font-text-size-md),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
 	}
 
-	.image {
-		align-self: start;
-		aspect-ratio: 2 / 1;
-		width: 100%;
-		object-fit: cover;
+	.heading {
+		margin-top: var(--spacing-micro-thick);
+		font-size: slopeIntercept(
+			var(--font-heading-size-md),
+			var(--font-heading-size-xl),
+			$breakpointMinimum,
+			$breakpointContainer
+		);
+		font-variation-settings: var(--font-variation-black);
 	}
 </style>

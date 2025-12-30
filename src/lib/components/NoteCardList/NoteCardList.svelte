@@ -1,5 +1,6 @@
 <script lang="ts">
 	import NoteCard from '$lib/components/NoteCard/NoteCard.svelte';
+	import MessageAction from '$lib/components/MessageAction/MessageAction.svelte';
 
 	interface Props {
 		notes: Note[];
@@ -7,10 +8,14 @@
 	}
 
 	const { notes, className }: Props = $props();
+
+	const message = "There's nothing here yet.";
+	const action =
+		'Check out my <a href="/work">work</a> or learn more <a href="/about">about me</a>.';
 </script>
 
 {#if !notes.length}
-	<p>There's nothing here yet. Check back later!</p>
+	<MessageAction {message} {action} />
 {:else}
 	<ul class="note-card-list {className}">
 		{#each notes as note}

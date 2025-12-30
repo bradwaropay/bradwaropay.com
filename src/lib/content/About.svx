@@ -4,7 +4,7 @@
     import StaggeredContent from '$lib/components/StaggeredContent/StaggeredContent.svelte';
     import { IconAccessible, IconAffiliate, IconBlocks, IconGavel,  } from '@tabler/icons-svelte';
     import IconTitledEntry from '$lib/components/IconTitledEntry/IconTitledEntry.svelte';
-    import ContactTagline from '$lib/components/ContactTagline/ContactTagline.svelte';
+    import MessageAction from '$lib/components/MessageAction/MessageAction.svelte';
     import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
     import Container from '$lib/components/Container/Container.svelte';
 </script>
@@ -57,6 +57,6 @@ Most engagements start with understanding what's broken. I assess your current s
 
 <FullBleed>
     <Container>
-        <ContactTagline />
+        <MessageAction message="Want to work together?" action="Set up a <a href='#'>discovery call</a> or send me an <a href='mailto:brad.waropay@gmail.com'>message</a>." />
     </Container>
 </FullBleed>

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import NoteCardList from '$lib/components/Structures/NoteCardList/NoteCardList.svelte';
-	import TitledPage from '$lib/components/Frames/TitledPage/TitledPage.svelte';
+	import NoteCardList from '$lib/components/NoteCardList/NoteCardList.svelte';
+	import TitledPage from '$lib/components/TitledPage/TitledPage.svelte';
 
 	const { data } = $props();
 </script>

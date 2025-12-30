@@ -1,12 +1,12 @@
 <script>
-    import BlockLinkList from '$lib/components/Compound/BlockLinkList/BlockLinkList.svelte';
-    import AboutClients from '$lib/components/Fixtures/AboutClients/AboutClients.svelte';   
-    import StaggeredContent from '$lib/components/Frames/StaggeredContent/StaggeredContent.svelte';
+    import BlockLinkList from '$lib/components/BlockLinkList/BlockLinkList.svelte';
+    import AboutClients from '$lib/components/AboutClients/AboutClients.svelte';   
+    import StaggeredContent from '$lib/components/StaggeredContent/StaggeredContent.svelte';
     import { IconAccessible, IconAffiliate, IconBlocks, IconGavel,  } from '@tabler/icons-svelte';
-    import IconTitledEntry from '$lib/components/Compound/IconTitledEntry/IconTitledEntry.svelte';
-    import ContactTagline from '$lib/components/Simple/ContactTagline/ContactTagline.svelte';
-    import FullBleed from '$lib/components/Frames/FullBleed/FullBleed.svelte';
-    import Container from '$lib/components/Frames/Container/Container.svelte';
+    import IconTitledEntry from '$lib/components/IconTitledEntry/IconTitledEntry.svelte';
+    import ContactTagline from '$lib/components/ContactTagline/ContactTagline.svelte';
+    import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
+    import Container from '$lib/components/Container/Container.svelte';
 </script>
 
 ## Let's Create!
@@ -26,7 +26,6 @@ work for teams, not against them, so they can focus on their craft and solve rea
         { label: 'Send me a message', href: 'mailto:brad.waropay@gmail.com' }
     ]}
 />
-
 
 ### I've worked with&hellip;
 

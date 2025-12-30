@@ -1,6 +1,6 @@
 <script lang="ts">
-	import WorkCardList from '$lib/components/Structures/WorkCardList/WorkCardList.svelte';
-	import TitledPage from '$lib/components/Frames/TitledPage/TitledPage.svelte';
+	import WorkCardList from '$lib/components/WorkCardList/WorkCardList.svelte';
+	import TitledPage from '$lib/components/TitledPage/TitledPage.svelte';
 	const { data } = $props();
 </script>
 

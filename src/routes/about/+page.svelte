@@ -1,7 +1,7 @@
 <script lang="ts">
-	import IntroHero from '$lib/components/Fixtures/IntroHero/IntroHero.svelte';
-	import Container from '$lib/components/Frames/Container/Container.svelte';
-	import Content from '$lib/components/Frames/Content/Content.svelte';
+	import IntroHero from '$lib/components/IntroHero/IntroHero.svelte';
+	import Container from '$lib/components/Container/Container.svelte';
+	import Content from '$lib/components/Content/Content.svelte';
 	import About from '$lib/content/About.svx';
 </script>
 

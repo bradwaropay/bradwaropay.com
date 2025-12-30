@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '$lib/styles/styles.css';
 	import type { Snippet } from 'svelte';
-	import SiteHeader from '$lib/components/Fixtures/SiteHeader/SiteHeader.svelte';
-	import SiteFooter from '$lib/components/Fixtures/SiteFooter/SiteFooter.svelte';
+	import SiteHeader from '$lib/components/SiteHeader/SiteHeader.svelte';
+	import SiteFooter from '$lib/components/SiteFooter/SiteFooter.svelte';
 
 	interface Props {
 		children: Snippet;

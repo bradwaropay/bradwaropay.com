@@ -1,8 +1,8 @@
 <script lang="ts">
-	import TitledSection from '$lib/components/Frames/TitledSection/TitledSection.svelte';
-	import IntroHero from '$lib/components/Fixtures/IntroHero/IntroHero.svelte';
-	import NoteCardList from '$lib/components/Structures/NoteCardList/NoteCardList.svelte';
-	import WorkCardList from '$lib/components/Structures/WorkCardList/WorkCardList.svelte';
+	import TitledSection from '$lib/components/TitledSection/TitledSection.svelte';
+	import IntroHero from '$lib/components/IntroHero/IntroHero.svelte';
+	import NoteCardList from '$lib/components/NoteCardList/NoteCardList.svelte';
+	import WorkCardList from '$lib/components/WorkCardList/WorkCardList.svelte';
 
 	const { data } = $props();
 </script>

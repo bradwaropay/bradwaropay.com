@@ -19,7 +19,7 @@
 <style lang="scss">
 	.note-card {
 		:global(.title) {
-			margin-top: var(--spacing-micro-slim);
+			margin-top: var(--spacing-micro-thick);
 		}
 	}
 	.image-link {
@@ -46,6 +46,7 @@
 	.date {
 		display: block;
 		justify-self: end;
+		margin-top: var(--spacing-micro-slim);
 		font-size: slopeIntercept(
 			var(--font-text-size-sm),
 			var(--font-text-size-md),

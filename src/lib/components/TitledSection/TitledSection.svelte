@@ -20,7 +20,7 @@
 <section class="titled-section {hasLink} {className}">
 	<Container>
 		{#if title}
-			<h2 class="title">{title}</h2>
+			<h2 class="title"><span class="title-background">{title}</span></h2>
 		{/if}
 		{@render children?.()}
 		{#if link}
@@ -31,19 +31,15 @@
 
 <style lang="scss">
 	.titled-section {
-		:global {
-			& + .titled-section {
-				margin-top: var(--spacing-macro-lg);
-			}
+		+ :global(.titled-section) {
+			margin-top: var(--spacing-macro-lg);
+			border-top: var(--border-width-hairline) dashed var(--color-page-neutral);
+			padding-top: var(--spacing-macro-md);
 		}
 
-		&.titled-section--has-link {
-			:global {
-				.link {
-					justify-self: end;
-					margin-top: var(--spacing-macro-lg);
-				}
-			}
+		:global(.link) {
+			justify-self: end;
+			margin-top: var(--spacing-macro-md);
 		}
 	}
 
@@ -56,8 +52,14 @@
 		);
 		font-variation-settings: var(--font-variation-black);
 
-		& + :global(*) {
+		+ :global(*) {
 			margin-top: var(--spacing-macro-lg);
 		}
+	}
+
+	.title-background {
+		background:
+			linear-gradient(to bottom, var(--color-page) 0, var(--color-page) 50%, transparent),
+			var(--background-diagonal-lines);
 	}
 </style>

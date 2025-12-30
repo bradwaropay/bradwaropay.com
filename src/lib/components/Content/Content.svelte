@@ -37,7 +37,7 @@
 			:global(h2),
 			:global(h3) {
 				&:not(:first-child) {
-					margin-top: var(--spacing-macro-lg);
+					margin-top: var(--spacing-macro-md);
 				}
 
 				& + :global(*) {

@@ -26,7 +26,7 @@
 	.home-page {
 		:global(.intro-hero) {
 			& + :global(.titled-section) {
-				margin-top: var(--spacing-macro-lg);
+				margin-top: var(--spacing-macro-md);
 			}
 		}
 	}

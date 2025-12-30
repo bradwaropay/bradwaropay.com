@@ -27,6 +27,8 @@ work for teams, not against them, so they can focus on their craft and solve rea
     ]}
 />
 
+<br/>
+
 ### I've worked with&hellip;
 
 <AboutClients />

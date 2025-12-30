@@ -12,13 +12,17 @@
 	<Content>
 		{@render data.content()}
 	</Content>
-	<NoteFooter />
 </Container>
+<NoteFooter />
 
 <style lang="scss">
 	:global(.note-header) {
 		+ :global(.container) {
 			margin-top: var(--spacing-macro-lg);
 		}
+	}
+
+	:global(.note-footer) {
+		margin-top: var(--spacing-macro-xl);
 	}
 </style>

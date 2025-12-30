@@ -4,15 +4,18 @@
 		label: string;
 		className?: string;
 		invert?: boolean;
-		withoutArrows?: boolean;
+		arrows?: 'before' | 'after' | 'none';
 	}
 
-	const { href, label, className, invert, withoutArrows }: Props = $props();
+	const { href, label, className, invert, arrows = 'after' }: Props = $props();
 </script>
 
 <a class="block-link {invert ? 'inverted' : ''} {className}" {href}>
+	{#if arrows === 'before'}
+		«
+	{/if}
 	{label}
-	{#if !withoutArrows}
+	{#if arrows === 'after'}
 		»{/if}
 </a>
 

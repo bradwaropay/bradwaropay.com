@@ -14,7 +14,7 @@
 <ul class="block-link-list {className}" style="flex-wrap: {hasWrap}">
 	{#each links as link}
 		<li>
-			<BlockLink withoutArrows href={link.href} label={link.label} />
+			<BlockLink arrows="none" href={link.href} label={link.label} />
 		</li>
 	{/each}
 </ul>

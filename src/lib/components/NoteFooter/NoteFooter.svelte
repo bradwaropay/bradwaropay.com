@@ -1,16 +1,29 @@
 <script lang="ts">
 	import Container from '$lib/components/Container/Container.svelte';
 	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
+
+	interface Props {
+		previousNote?: string;
+		nextNote?: string;
+	}
+
+	const { previousNote, nextNote }: Props = $props();
 </script>
 
 <footer class="note-footer">
 	<Container>
 		<nav class="navigation">
 			<BlockLink href="/notes" label="Back to notes" arrows="none" />
-			<div class="pagination">
-				<BlockLink href="/" label="Previous" arrows="before" />
-				<BlockLink href="/" label="Next" />
-			</div>
+			{#if previousNote || nextNote}
+				<div class="pagination">
+					{#if previousNote}
+						<BlockLink href={`/notes/${previousNote}`} label="Previous" arrows="before" />
+					{/if}
+					{#if nextNote}
+						<BlockLink href={`/notes/${nextNote}`} label="Next" />
+					{/if}
+				</div>
+			{/if}
 		</nav>
 		<div class="author">
 			<img src="https://placehold.co/96x96" alt="Brad Waropay" class="image" />
@@ -41,6 +54,14 @@
 		padding-top: var(--spacing-macro-xs);
 	}
 
+	.image {
+		border-radius: var(--border-radius-circle);
+		aspect-ratio: 1/1;
+		width: 96px;
+		object-fit: cover;
+		object-position: center;
+	}
+
 	.byline {
 		margin-top: var(--spacing-micro-thin);
 		max-width: $layoutWidthContent;
@@ -50,13 +71,5 @@
 			$breakpointMinimum,
 			$breakpointContainer
 		);
-	}
-
-	.image {
-		border-radius: var(--border-radius-circle);
-		aspect-ratio: 1/1;
-		width: 96px;
-		object-fit: cover;
-		object-position: center;
 	}
 </style>

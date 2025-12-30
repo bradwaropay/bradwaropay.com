@@ -5,13 +5,19 @@
 	import WorkCardList from '$lib/components/WorkCardList/WorkCardList.svelte';
 
 	const { data } = $props();
+
+	const hasPreviousNotes = data.notes.length > 2;
+	const previousNotesLink = hasPreviousNotes
+		? { label: 'Previous notes', href: '/notes' }
+		: undefined;
+	const notes = data.notes.slice(0, 2);
 </script>
 
 <div class="home-page">
 	<IntroHero link={{ label: "Let's work together", href: '/about' }} />
 	{#if !!data.notes.length}
-		<TitledSection title="Latest Notes" link={{ label: 'Previous notes', href: '/notes' }}>
-			<NoteCardList notes={data.notes} />
+		<TitledSection title="Latest Notes" link={previousNotesLink}>
+			<NoteCardList {notes} />
 		</TitledSection>
 	{/if}
 	{#if !!data.work.length}

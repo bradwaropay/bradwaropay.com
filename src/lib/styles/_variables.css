@@ -4,7 +4,6 @@
 	--color-palette-black: black;
 	--color-palette-dimgray: dimgray;
 	--color-palette-lightgray: lightgray;
-	--color-palette-gainsboro: gainsboro;
 	--color-palette-white: white;
 	--color-palette-orangered: orangered;
 	--color-palette-orange: orange;
@@ -14,7 +13,7 @@
 	--color-palette-slateblue: slateblue;
 	/* Page */
 	--color-page: var(--color-palette-white);
-	--color-page-neutral: var(--color-palette-gainsboro);
+	--color-page-neutral: var(--color-palette-lightgray);
 	--color-page-accent: var(--color-palette-dodgerblue);
 	--color-page-contrast: var(--color-palette-black);
 

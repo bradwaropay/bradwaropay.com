@@ -1,8 +1,14 @@
 <script lang="ts">
 	import Container from '$lib/components/Container/Container.svelte';
 	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
-	import SocialLinks from '$lib/components/SocialLinks/SocialLinks.svelte';
+	import IconLinkList from '$lib/components/IconLinkList/IconLinkList.svelte';
 	import BlobPortrait from '$lib/components/BlobPortrait/BlobPortrait.svelte';
+	import {
+		IconMail,
+		IconBrandBluesky,
+		IconBrandCodepen,
+		IconBrandGithub
+	} from '@tabler/icons-svelte';
 
 	interface Props {
 		class?: string;
@@ -14,6 +20,13 @@
 	}
 
 	let { class: className, link, element = $bindable() }: Props = $props();
+
+	const socialLinks = [
+		{ icon: IconMail, label: 'Email', href: 'mailto:brad.waropay@gmail.com' },
+		{ icon: IconBrandBluesky, label: 'BlueSky', href: 'https://bsky.app/profile/bradwaropay.dev' },
+		{ icon: IconBrandCodepen, label: 'CodePen', href: 'https://codepen.io/bradwaropay' },
+		{ icon: IconBrandGithub, label: 'GitHub', href: 'https://github.com/bradwaropay' }
+	];
 </script>
 
 <section bind:this={element} class="intro-hero {className}">
@@ -26,7 +39,7 @@
 				I make building products as seamless and enjoyable as using them
 			</span>
 		</p>
-		<SocialLinks className="social-links" />
+		<IconLinkList className="social-links" links={socialLinks} withBackground />
 		{#if link}
 			<BlockLink className="link" label={link.label} href={link.href} />
 		{/if}

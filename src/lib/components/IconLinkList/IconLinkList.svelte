@@ -4,16 +4,17 @@
 
 	interface Props {
 		links: { icon: Icon; label: string; href: string }[];
+		withBackground?: boolean;
 		className?: string;
 	}
 
-	const { links, className }: Props = $props();
+	const { links, withBackground, className }: Props = $props();
 </script>
 
 <ul class="icon-link-list {className}">
 	{#each links as link}
 		<li>
-			<IconLink icon={link.icon} label={link.label} href={link.href} />
+			<IconLink icon={link.icon} label={link.label} href={link.href} {withBackground} />
 		</li>
 	{/each}
 </ul>

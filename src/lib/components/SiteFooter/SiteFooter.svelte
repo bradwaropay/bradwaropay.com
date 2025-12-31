@@ -9,7 +9,7 @@
 
 	const year = new Date().getFullYear();
 	const blueskyUrl = 'https://bsky.app/profile/bradwaropay.dev';
-	const rssUrl = 'https://bradwaropay.dev/rss.xml';
+	const rssUrl = '/feed';
 </script>
 
 <footer class="site-footer {className}">

@@ -17,12 +17,12 @@ declare global {
 		createdAt: string;
 		updatedAt?: string;
 		published: boolean;
+		selected: boolean;
 	}
 
 	interface Work extends Note {
 		client: string;
 		clientLink?: string;
-		selected: boolean;
 	}
 
 	declare module "*.svx" {

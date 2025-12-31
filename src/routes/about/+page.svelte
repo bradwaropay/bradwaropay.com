@@ -16,7 +16,7 @@
 
 <style>
 	.about-page {
-		> :global(*) + :global(*) {
+		> :global(.intro-hero + .container) {
 			margin-top: var(--spacing-macro-md);
 		}
 	}

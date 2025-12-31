@@ -11,7 +11,7 @@
 }
 
 ::selection {
-	background-color: rgb(from var(--color-content-accent) r g b / 0.8);
+	background-color:  var(--color-content-accent);
 	color: var(--color-content-contrast);
 }
 
@@ -23,7 +23,6 @@ body {
 	--scrollbar-width: calc(100vw - 100cqw);
 
 	font-family: var(--font-primary);
-	font-variation-settings: var(--font-variation-regular);
 	line-height: var(--font-text-line-height);
 }
 
@@ -33,17 +32,12 @@ h3,
 h4,
 h5,
 h6 {
-	font-variation-settings: var(--font-variation-bold);
 	line-height: var(--font-heading-line-height);
-}
-
-strong {
-	font-variation-settings: var(--font-variation-bold);
 }
 
 a {
 	color: var(--color-content);
-	font-variation-settings: var(--font-variation-semi-bold);
+	font-weight: 600;
 	text-decoration: underline 0.175em solid var(--color-interaction-accent);
 	transition:
 		color 0.2s ease-in-out,

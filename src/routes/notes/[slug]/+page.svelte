@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Container from '$lib/components/Container/Container.svelte';
 	import Content from '$lib/components/Content/Content.svelte';
-	import NoteHeader from '$lib/components/NoteHeader/NoteHeader.svelte';
 	import NoteFooter from '$lib/components/NoteFooter/NoteFooter.svelte';
+	import NoteHeader from '$lib/components/NoteHeader/NoteHeader.svelte';
 
 	const { data } = $props();
 </script>
@@ -16,10 +16,8 @@
 <NoteFooter />
 
 <style lang="scss">
-	:global(.note-header) {
-		+ :global(.container) {
-			margin-top: var(--spacing-macro-lg);
-		}
+	:global(.note-header + .container) {
+		margin-top: var(--spacing-macro-lg);
 	}
 
 	:global(.note-footer) {

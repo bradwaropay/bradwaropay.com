@@ -9,6 +9,3 @@
 		<WorkCardList work={data.work} />
 	</TitledPage>
 </div>
-
-<style>
-</style>

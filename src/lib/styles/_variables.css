@@ -11,6 +11,7 @@
 	--color-palette-chocolate: chocolate;
 	--color-palette-seagreen: seagreen;
 	--color-palette-slateblue: slateblue;
+
 	/* Page */
 	--color-page: var(--color-palette-white);
 	--color-page-neutral: var(--color-palette-lightgray);
@@ -70,17 +71,20 @@
 	--font-primary: peridot-pe-variable, sans-serif;
 	--font-accent: 'Glodok', sans-serif;
 
+	/* Weights */
+	--font-weight-regular: 400;
+	--font-weight-semi-bold: 600;
+	--font-weight-bold: 800;
+	--font-weight-black: 900;
+	--font-weight-heavy: 950;
+
 	/* Variations */
 	/* For Primary only */
-	--font-variation-regular: 'ital' 0, 'wdth' 100, 'wght' 400;
-	--font-variation-semi-bold: 'ital' 0, 'wdth' 100, 'wght' 600;
-	--font-variation-bold: 'ital' 0, 'wdth' 100, 'wght' 800;
-	--font-variation-black: 'ital' 0, 'wdth' 100, 'wght' 900;
-	--font-variation-heavy: 'ital' 0, 'wdth' 100, 'wght' 950;
-
-	/* Weights */
-	/* For Accent only */
-	--font-weight-regular: 400;
+	--font-variation-regular: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-regular);
+	--font-variation-semi-bold: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-semi-bold);
+	--font-variation-bold: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-bold);
+	--font-variation-black: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-black);
+	--font-variation-heavy: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-heavy);
 
 	/** Text **/
 	/* Sizes */

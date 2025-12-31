@@ -28,12 +28,9 @@
 </div>
 
 <style lang="scss">
-	// TODO: Looking into better page layout solutions
 	.home-page {
-		:global(.intro-hero) {
-			& + :global(.titled-section) {
-				margin-top: var(--spacing-macro-md);
-			}
+		:global(.intro-hero + .titled-section) {
+			margin-top: var(--spacing-macro-md);
 		}
 	}
 </style>

@@ -3,7 +3,7 @@ import type { ServerLoadEvent } from '@sveltejs/kit';
 
 export const load = async ({ params }: ServerLoadEvent) => {
 	try {
-		const note = await import(`$lib/notes/${params.slug}.svx`);
+		const note = await import(`$lib/content/notes/${params.slug}.svx`);
 
 		return {
 			meta: note.metadata,

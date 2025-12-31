@@ -1,5 +1,3 @@
-@use 'sass:math';
-
 @function slopeIntercept($mV, $MV, $mW, $MW) {
 	$slope: calc(($MV - $mV) / ($MW - $mW));
 	$intercept: calc(($mW * -1) * $slope + $mV);

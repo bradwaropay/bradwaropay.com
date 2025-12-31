@@ -30,10 +30,10 @@
 	--color-interaction-contrast: var(--color-palette-white);
 
 	/** Backgrounds **/
-	--background-diagonal-lines: url($lib/images/diagonal-lines.svg);
-	--background-texture: url($lib/images/texture.svg);
+	--background-diagonal-lines: url($lib/images/backgrounds/diagonal-lines.svg);
+	--background-texture: url($lib/images/backgrounds/texture.svg);
 	--background-texture-fixed: var(--background-texture) fixed;
-	--background-topography: url($lib/images/topography.svg) center/50rem repeat;
+	--background-topography: url($lib/images/backgrounds/topography.svg) center/50rem repeat;
 	--background-topography-fixed: var(--background-topography) fixed;
 	--background-texture-topography: var(--background-texture), var(--background-topography);
 	--background-texture-topography-fixed: var(--background-texture-fixed), var(--background-topography-fixed);

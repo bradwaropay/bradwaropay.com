@@ -4,7 +4,7 @@ import type { RequestEvent } from '@sveltejs/kit';
 async function getNotes() {
 	let notes: Note[] = [];
 
-	const paths = import.meta.glob('/src/lib/notes/*.svx', { eager: true });
+	const paths = import.meta.glob('/src/lib/content/notes/*.svx', { eager: true });
 
 	for (const path in paths) {
 		const file = paths[path];

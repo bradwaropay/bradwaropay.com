@@ -2,7 +2,7 @@
 title: 'Hello, World!'
 description: 'First post!'
 createdAt: '2026.01.01'
-image: '/src/lib/images/notes/hello_world.webp'
+image: '/images/notes/hello_world.webp'
 published: true
 ---
 

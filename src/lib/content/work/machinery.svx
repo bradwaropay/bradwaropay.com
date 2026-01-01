@@ -1,6 +1,6 @@
 ---
 createdAt: '2025-05-22'
-image: '/src/lib/images/work/machinery.webp'
+image: '/images/work/machinery.webp'
 title: 'Machinery: A Design System Methodology'
 client: 'Personal Project'
 description: "Inspired by <a href='https://atomicdesign.bradfrost.com/'>Brad Frost's Atomic Design</a>, this approach reimagines components as machines, with clear parts and assembly rather than atomic metaphors. It takes a holistic approach to design and development, providing practical guidance for the real-world challenges and cross-disciplinary problems that don't fit neatly into the traditional atomic framework."

@@ -4,7 +4,7 @@ import type { RequestEvent } from '@sveltejs/kit';
 async function getAllWork() {
 	let allWork: Work[] = [];
 
-	const paths = import.meta.glob('/src/lib/work/*.svx', { eager: true });
+	const paths = import.meta.glob('/src/lib/content/work/*.svx', { eager: true });
 
 	for (const path in paths) {
 		const file = paths[path];

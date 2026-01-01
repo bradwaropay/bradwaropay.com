@@ -1,20 +1,36 @@
 <script lang="ts">
-	import HomeSection from '$lib/components/compound/HomeSection/HomeSection.svelte';
-	import IntroSection from '$lib/components/compound/IntroSection/IntroSection.svelte';
-	import NoteCardList from '$lib/components/compound/NoteCardList/NoteCardList.svelte';
-	import WorkCardList from '$lib/components/compound/WorkCardList/WorkCardList.svelte';
+	import TitledSection from '$lib/components/TitledSection/TitledSection.svelte';
+	import IntroHero from '$lib/components/IntroHero/IntroHero.svelte';
+	import NoteCardList from '$lib/components/NoteCardList/NoteCardList.svelte';
+	import WorkCardList from '$lib/components/WorkCardList/WorkCardList.svelte';
 
 	const { data } = $props();
+
+	const hasPreviousNotes = data.notes.length > 2;
+	const previousNotesLink = hasPreviousNotes
+		? { label: 'Previous notes', href: '/notes' }
+		: undefined;
+	const notes = data.notes.slice(0, 2);
 </script>
 
-<IntroSection />
-{#if !!data.notes.length}
-	<HomeSection title="Latest Notes" linkLabel="Previous notes" linkHref="/notes">
-		<NoteCardList notes={data.notes} />
-	</HomeSection>
-{/if}
-{#if !!data.work.length}
-	<HomeSection title="Select Work" linkLabel="Addtional work" linkHref="/work">
-		<WorkCardList work={data.work} />
-	</HomeSection>
-{/if}
+<div class="home-page">
+	<IntroHero link={{ label: "Let's work together", href: '/about' }} />
+	{#if !!data.notes.length}
+		<TitledSection title="Latest Notes" link={previousNotesLink}>
+			<NoteCardList {notes} />
+		</TitledSection>
+	{/if}
+	{#if !!data.work.length}
+		<TitledSection title="Select Work" link={{ label: 'Addtional work', href: '/work' }}>
+			<WorkCardList work={data.work} />
+		</TitledSection>
+	{/if}
+</div>
+
+<style lang="scss">
+	.home-page {
+		:global(.intro-hero + .titled-section) {
+			margin-top: var(--spacing-macro-md);
+		}
+	}
+</style>

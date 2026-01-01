@@ -1,41 +1,60 @@
+@property --scrollbar-width {
+	syntax: "";
+	inherits: true;
+	inital-value: 0;
+}
+
 :focus-visible {
-	/* Appearance */
-	outline: 2px dotted orangered;
-	outline-offset: 0.5rem;
-	border-radius: 0.125rem;
+	outline: var(--border-width-fine) dotted var(--color-content-accent);
+	outline-offset: var(--spacing-micro-slim);
+	border-radius: var(--border-radius-squircle);
 }
 
 ::selection {
-	/* Appearance */
-	background-color: rgb(from darkslategray r g b / 0.8);
-	color: white;
+	background-color:  var(--color-content-accent);
+	color: var(--color-content-contrast);
+}
+
+html {
+	container-type: inline-size;
 }
 
 body {
-	/* Typography */
-	font-family: peridot-pe-variable, sans-serif;
-	font-style: normal;
-	line-height: 1.5;
+	--scrollbar-width: calc(100vw - 100cqw);
+
+	font-family: var(--font-primary);
+	line-height: var(--font-text-line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: var(--font-heading-line-height);
 }
 
 a {
-	color: black;
-	text-decoration: underline 0.25rem solid orange;
+	color: var(--color-content);
+	font-weight: 600;
+	text-decoration: underline 0.175em solid var(--color-interaction-accent);
 	transition:
 		color 0.2s ease-in-out,
 		text-decoration-color 0.2s ease-in-out;
 
 	&:hover {
-		color: orange;
-		text-decoration-color: black;
+		color: var(--color-interaction-accent);
+		text-decoration-color: var(--color-interaction);
 	}
 
-	&.invert {
-		color: white;
+	&.is-inverted {
+		color: var(--color-interaction-contrast);
+		text-decoration-color: var(--color-interaction-accent);
 
 		&:hover {
-			color: orange;
-			text-decoration-color: white;
+			color: var(--color-interaction-accent);
+			text-decoration-color: var(--color-interaction-contrast);
 		}
 	}
 }

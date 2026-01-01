@@ -1,0 +1,125 @@
+
+:root {
+	/** Colors **/
+	/* Palette */
+	--color-palette-black: black;
+	--color-palette-dimgray: dimgray;
+	--color-palette-lightgray: lightgray;
+	--color-palette-white: white;
+	--color-palette-orangered: orangered;
+	--color-palette-orange: orange;
+	--color-palette-dodgerblue: dodgerblue;
+	--color-palette-chocolate: chocolate;
+	--color-palette-seagreen: seagreen;
+	--color-palette-slateblue: slateblue;
+
+	/* Page */
+	--color-page: var(--color-palette-white);
+	--color-page-neutral: var(--color-palette-lightgray);
+	--color-page-accent: var(--color-palette-dodgerblue);
+	--color-page-contrast: var(--color-palette-black);
+
+	/* Content */
+	--color-content: var(--color-palette-black);
+	--color-content-neutral: var(--color-palette-dimgray);
+	--color-content-accent: var(--color-palette-orangered);
+	--color-content-contrast: var(--color-palette-white);
+
+	/* Interaction */
+	--color-interaction: var(--color-palette-black);
+	--color-interaction-neutral: var(--color-palette-dimgray);
+	--color-interaction-accent: var(--color-palette-orange);
+	--color-interaction-contrast: var(--color-palette-white);
+
+	/** Backgrounds **/
+	--background-diagonal-lines: url($lib/images/backgrounds/diagonal-lines.svg);
+	--background-texture: url($lib/images/backgrounds/texture.svg);
+	--background-texture-fixed: var(--background-texture) fixed;
+	--background-topography: url($lib/images/backgrounds/topography.svg) center/50rem repeat;
+	--background-topography-fixed: var(--background-topography) fixed;
+	--background-texture-topography: var(--background-texture), var(--background-topography);
+	--background-texture-topography-fixed: var(--background-texture-fixed), var(--background-topography-fixed);
+
+	/** Borders **/
+	/* Radii */
+	--border-radius-squircle: 0.125rem;
+	--border-radius-circle: 50%;
+
+	/* Widths */
+	--border-width-hairline: 0.0625rem;
+	--border-width-fine: 0.125rem;
+	--border-width-thin: 0.25rem;
+	--border-width-slim: 0.5rem;
+	--border-width-thick: 1rem;
+
+	/** Spacing **/
+	/* Micro */
+	--spacing-micro-hairline: 0.0625rem;
+	--spacing-micro-fine: 0.125rem;
+	--spacing-micro-thin: 0.25rem;
+	--spacing-micro-slim: 0.5rem;
+	--spacing-micro-thick: 1rem;
+	
+	/* Macro */
+	--spacing-macro-xs: 1.5rem;
+	--spacing-macro-sm: 2rem;
+	--spacing-macro-md: 3rem;
+	--spacing-macro-lg: 5rem;
+	--spacing-macro-xl: 8rem;
+
+	/** Typography **/
+	/* Families */
+	--font-primary: peridot-pe-variable, sans-serif;
+	--font-accent: 'Glodok', sans-serif;
+
+	/* Weights */
+	--font-weight-regular: 400;
+	--font-weight-semi-bold: 600;
+	--font-weight-bold: 800;
+	--font-weight-black: 900;
+	--font-weight-heavy: 950;
+
+	/* Variations */
+	/* For Primary only */
+	--font-variation-regular: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-regular);
+	--font-variation-semi-bold: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-semi-bold);
+	--font-variation-bold: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-bold);
+	--font-variation-black: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-black);
+	--font-variation-heavy: 'ital' 0, 'wdth' 100, 'wght' var(--font-weight-heavy);
+
+	/** Text **/
+	/* Sizes */
+	--font-text-size-xs: 0.875rem;
+	--font-text-size-sm: 1rem;
+	--font-text-size-md: 1.25rem;
+	--font-text-size-lg: 1.5rem;
+	--font-text-size-xl: 1.75rem;
+ 
+	/* Line height */
+	--font-text-line-height: 1.625;
+
+	/** Heading **/
+	/* Sizes */
+	--font-heading-size-xs: 2rem;
+	--font-heading-size-sm: 2.5rem;
+	--font-heading-size-md: 3.5rem;
+	--font-heading-size-lg: 5rem;
+	--font-heading-size-xl: 7rem;
+
+	/* Line height */
+	--font-heading-line-height: 1.125;
+
+	/** Icons **/
+	/* Sizes */
+	--icon-size-xs: 1.5rem;
+	--icon-size-sm: 2rem;
+	--icon-size-md: 2.5rem;
+	--icon-size-lg: 3.5rem;
+	--icon-size-xl: 5rem;
+
+	/** Motion **/
+	/* Durations */
+	--motion-duration-short: 0.2s;
+	--motion-duration-medium: 0.4s;
+	--motion-duration-long: 0.6s;
+}

@@ -1,0 +1,7 @@
+@function slopeIntercept($mV, $MV, $mW, $MW) {
+	$slope: calc(($MV - $mV) / ($MW - $mW));
+	$intercept: calc(($mW * -1) * $slope + $mV);
+	$between: calc($intercept + $slope * 100vw);
+	
+	@return clamp($mV, $between, $MV);
+}

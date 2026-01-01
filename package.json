@@ -47,6 +47,7 @@
 		"prettier": "^3.4.2",
 		"prettier-plugin-css-order": "^2.1.2",
 		"prettier-plugin-svelte": "^3.3.3",
+		"sass": "^1.94.2",
 		"storybook": "^8.6.12",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
@@ -62,6 +63,7 @@
 	},
 	"dependencies": {
 		"@tabler/icons-svelte": "^3.31.0",
-		"mdsvex": "^0.12.6"
+		"mdsvex": "^0.12.6",
+		"simplex-noise": "^4.0.3"
 	}
 }

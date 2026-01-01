@@ -1,9 +1,13 @@
 import { svelteTesting } from '@testing-library/svelte/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import { scssPreprocessorOptions } from './scss.config.js';
 
 export default defineConfig({
 	plugins: [sveltekit()],
+	css: {
+		preprocessorOptions: scssPreprocessorOptions
+	},
 	test: {
 		workspace: [
 			{

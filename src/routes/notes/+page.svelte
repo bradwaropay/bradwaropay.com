@@ -1,28 +1,12 @@
 <script lang="ts">
-	import Container from '$lib/components/simple/Container/Container.svelte';
-	import NoteCardList from '$lib/components/compound/NoteCardList/NoteCardList.svelte';
-	import PageTitle from '$lib/components/simple/PageTitle/PageTitle.svelte';
+	import NoteCardList from '$lib/components/NoteCardList/NoteCardList.svelte';
+	import TitledPage from '$lib/components/TitledPage/TitledPage.svelte';
 
 	const { data } = $props();
 </script>
 
 <div class="notes-page">
-	<Container>
-		<PageTitle title="Notes" />
-		<div class="notes-list">
-			<NoteCardList notes={data.notes} />
-		</div>
-	</Container>
+	<TitledPage title="Notes">
+		<NoteCardList notes={data.notes} />
+	</TitledPage>
 </div>
-
-<style>
-	.notes-page {
-		:global {
-			.page-title {
-				& + * {
-					margin-top: 3rem;
-				}
-			}
-		}
-	}
-</style>

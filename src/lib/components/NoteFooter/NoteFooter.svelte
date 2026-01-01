@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Container from '$lib/components/Container/Container.svelte';
 	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
+	import portrait from '$lib/images/portrait.webp';
 
 	interface Props {
 		previousNote?: string;
@@ -26,7 +27,7 @@
 			{/if}
 		</nav>
 		<div class="author">
-			<img src="https://placehold.co/96x96" alt="Brad Waropay" class="image" />
+			<img src={portrait} alt="Brad Waropay" class="image" />
 			<p class="byline">
 				<strong>Hi, I'm Brad Waropay.</strong> I'm a DesignOps and Design Systems leader with 15+
 				years bridging design, engineering, and product. <a href="/about">Let's work together</a>.

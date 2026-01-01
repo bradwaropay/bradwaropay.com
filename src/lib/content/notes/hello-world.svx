@@ -6,8 +6,10 @@ image: '/src/lib/images/notes/hello_world.webp'
 published: true
 ---
 
-Hello, World!
+I've rebuilt this site more times than I care to admit. Each time I told myself it was a yearly creative exercise to experiment with new ideas and explore new technologies, but honestly it always ended up becoming a trap of perfecting it before I actually got to use it in a meaningful way. This time I'm trying something different. Make something simple, enduring, and functional that allows me to focus my time on actual creative endeavours and learnings that I can share with others through it.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+**Well, I made it!** The site is live and with this first post as a starting point, I'll be using these notes to think out loud and document my journey forward.
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## What's next?
+
+I'll be writing more. As our industry's landscape quickly evolves, I find myself exploring what it really means to be a designer and developer right now and how to navigate it. I have a lot of thoughts, ideas, and projects and I'm excited to share them with you.

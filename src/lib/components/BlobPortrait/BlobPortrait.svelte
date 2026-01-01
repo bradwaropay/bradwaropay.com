@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Blob from '$lib/components/Blob/Blob.svelte';
+	import portrait from '$lib/images/portrait.webp';
 
 	interface Props {
 		className?: string;
@@ -12,7 +13,7 @@
 	<Blob gradientStart="dodgerblue" gradientEnd="gainsboro" gradientAngle={-45} speed={1} />
 	<Blob gradientStart="gainsboro" gradientEnd="dodgerblue" gradientAngle={45} speed={1} />
 	<Blob gradientStart="dodgerblue" gradientEnd="gainsboro" gradientAngle={180} speed={1} />
-	<img class="portrait" src=" https://placehold.co/1200x1200" alt="Brad Waropay Portrait" />
+	<img class="portrait" src={portrait} alt="Brad Waropay Portrait" />
 </div>
 
 <style>
@@ -25,15 +26,15 @@
 			left: 50%;
 			transform: translate(-50%, -50%) scale(1.5);
 			opacity: 0.75;
-			width: 100%;
-			height: 100%;
 		}
 	}
 
 	.portrait {
-		position: relative;
 		mix-blend-mode: multiply;
 		border-radius: var(--border-radius-circle);
 		aspect-ratio: 1/1;
+		width: 100%;
+		object-fit: cover;
+		object-position: center;
 	}
 </style>

@@ -50,7 +50,13 @@
 <style lang="scss">
 	.intro-hero {
 		background: var(--background-texture-topography-fixed);
-		padding: var(--spacing-macro-lg) 0;
+		padding: slopeIntercept(
+				var(--spacing-macro-lg),
+				13rem,
+				$breakpointContainer,
+				$breakpointMinimum
+			)
+			0 var(--spacing-macro-lg);
 		overflow: hidden;
 
 		:global(.intro-container) {
@@ -59,7 +65,7 @@
 
 		:global(.blob-portrait) {
 			position: absolute;
-			top: -3rem;
+			top: slopeIntercept(-13rem, -3rem, $breakpointMinimum, $breakpointContainer);
 			right: slopeIntercept(
 				-3rem,
 				var(--spacing-macro-xl),

@@ -35,6 +35,8 @@
 	// Animation state
 	let isVisible = false;
 	let isScrolling = false;
+	let isReady = $state(false);
+	let prefersReducedMotion = false;
 	let scrollTimeout: ReturnType<typeof setTimeout>;
 	let animationFrameId: number;
 
@@ -109,6 +111,9 @@
 	onMount(() => {
 		if (!svgElement || !pathElement || !gradientStop1 || !gradientStop2) return;
 
+		// Check for reduced motion preference
+		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 		const noise = createNoise2D();
 
 		// How many points do we want
@@ -157,9 +162,30 @@
 			gradientStop2.setAttribute('stop-color', gradientEnd);
 		}
 
-		// Render initial blob state so it's not empty
+		// Apply initial noise to get a unique random shape for each blob
+		for (let point of points) {
+			const nX = noise(point.noiseOffsetX, point.noiseOffsetX);
+			const nY = noise(point.noiseOffsetY, point.noiseOffsetY);
+			point.x = map(nX, -1, 1, point.originX - 20, point.originX + 20);
+			point.y = map(nY, -1, 1, point.originY - 20, point.originY + 20);
+		}
+
+		// Render initial blob state
 		const initialPath = spline(points, 1, true);
 		pathElement.setAttribute('d', initialPath);
+
+		// Fade in after browser paints initial state
+		// Double rAF ensures the opacity:0 frame is painted before transitioning
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				isReady = true;
+			});
+		});
+
+		// If user prefers reduced motion, skip the morphing animation
+		if (prefersReducedMotion) {
+			return;
+		}
 
 		function animate() {
 			// Only animate when visible and not scrolling
@@ -239,6 +265,7 @@
 <svg
 	bind:this={svgElement}
 	class="blob {className}"
+	style:opacity={isReady ? 1 : 0}
 	viewBox="0 0 200 200"
 	width="100%"
 	height="100%"
@@ -254,6 +281,7 @@
 
 <style>
 	.blob {
+		transition: opacity 0.6s ease-out;
 		/* Promote to own compositor layer for smoother animation */
 		will-change: contents;
 		contain: layout style paint;

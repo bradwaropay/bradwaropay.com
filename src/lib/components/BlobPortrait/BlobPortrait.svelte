@@ -19,6 +19,8 @@
 <style>
 	.blob-portrait {
 		position: relative;
+		border-radius: var(--border-radius-circle);
+		background: linear-gradient(to bottom left, var(--color-page), var(--color-page-accent));
 
 		:global(.blob) {
 			position: absolute;

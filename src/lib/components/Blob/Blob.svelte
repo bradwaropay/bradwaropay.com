@@ -33,10 +33,10 @@
 	const gradientId = `blob-gradient-${crypto.randomUUID()}`;
 
 	// Animation state
-	let isVisible = false;
-	let isScrolling = false;
 	let isReady = $state(false);
 	let prefersReducedMotion = false;
+	let isVisible = false;
+	let isScrolling = false;
 	let scrollTimeout: ReturnType<typeof setTimeout>;
 	let animationFrameId: number;
 
@@ -188,12 +188,6 @@
 		}
 
 		function animate() {
-			// Only animate when visible and not scrolling
-			if (!isVisible || isScrolling) {
-				animationFrameId = requestAnimationFrame(animate);
-				return;
-			}
-
 			// Create a smooth, continuous path from the points using spline
 			const path = spline(points, 1, true);
 			pathElement.setAttribute('d', path);
@@ -230,34 +224,56 @@
 			animationFrameId = requestAnimationFrame(animate);
 		}
 
-		// 1. IntersectionObserver - only animate when visible
+		function startAnimation() {
+			if (animationFrameId) return; // Already running
+			animationFrameId = requestAnimationFrame(animate);
+		}
+
+		function stopAnimation() {
+			if (animationFrameId) {
+				cancelAnimationFrame(animationFrameId);
+				animationFrameId = 0;
+			}
+		}
+
+		function updateAnimationState() {
+			if (isVisible && !isScrolling) {
+				startAnimation();
+			} else {
+				stopAnimation();
+			}
+		}
+
+		// IntersectionObserver - track visibility
 		const observer = new IntersectionObserver(
 			(entries) => {
 				isVisible = entries[0].isIntersecting;
+				updateAnimationState();
 			},
 			{ threshold: 0 }
 		);
 		observer.observe(svgElement);
 
-		// 2. Pause animation during scroll
+		// Pause animation during scroll
 		function handleScroll() {
-			isScrolling = true;
+			if (!isScrolling) {
+				isScrolling = true;
+				updateAnimationState();
+			}
 			clearTimeout(scrollTimeout);
 			scrollTimeout = setTimeout(() => {
 				isScrolling = false;
+				updateAnimationState();
 			}, 150);
 		}
 		window.addEventListener('scroll', handleScroll, { passive: true });
-
-		// Start animation loop
-		animationFrameId = requestAnimationFrame(animate);
 
 		// Cleanup on unmount
 		return () => {
 			observer.disconnect();
 			window.removeEventListener('scroll', handleScroll);
 			clearTimeout(scrollTimeout);
-			cancelAnimationFrame(animationFrameId);
+			stopAnimation();
 		};
 	});
 </script>

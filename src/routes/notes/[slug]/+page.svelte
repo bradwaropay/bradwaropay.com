@@ -21,6 +21,6 @@
 	}
 
 	:global(.note-footer) {
-		margin-top: var(--spacing-macro-xl);
+		margin-top: var(--spacing-macro-lg);
 	}
 </style>

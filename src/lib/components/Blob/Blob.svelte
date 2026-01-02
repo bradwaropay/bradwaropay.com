@@ -24,12 +24,19 @@
 		gradientAngle = 0
 	}: Props = $props();
 
+	let svgElement: SVGSVGElement;
 	let pathElement: SVGPathElement;
 	let gradientStop1: SVGStopElement;
 	let gradientStop2: SVGStopElement;
 
 	// Generate a unique gradient ID for this component instance
 	const gradientId = `blob-gradient-${crypto.randomUUID()}`;
+
+	// Animation state
+	let isVisible = false;
+	let isScrolling = false;
+	let scrollTimeout: ReturnType<typeof setTimeout>;
+	let animationFrameId: number;
 
 	function formatPoints(points: Array<{ x: number; y: number }>, close: boolean): number[] {
 		const pointPairs: [number, number][] = points.map(({ x, y }) => [x, y]);
@@ -100,7 +107,7 @@
 	}
 
 	onMount(() => {
-		if (!pathElement || !gradientStop1 || !gradientStop2) return;
+		if (!svgElement || !pathElement || !gradientStop1 || !gradientStop2) return;
 
 		const noise = createNoise2D();
 
@@ -150,7 +157,17 @@
 			gradientStop2.setAttribute('stop-color', gradientEnd);
 		}
 
-		(function animate() {
+		// Render initial blob state so it's not empty
+		const initialPath = spline(points, 1, true);
+		pathElement.setAttribute('d', initialPath);
+
+		function animate() {
+			// Only animate when visible and not scrolling
+			if (!isVisible || isScrolling) {
+				animationFrameId = requestAnimationFrame(animate);
+				return;
+			}
+
 			// Create a smooth, continuous path from the points using spline
 			const path = spline(points, 1, true);
 			pathElement.setAttribute('d', path);
@@ -184,12 +201,48 @@
 				gradientStop2.setAttribute('stop-color', `hsl(${hue + 60}, 100%, 75%)`);
 			}
 
-			requestAnimationFrame(animate);
-		})();
+			animationFrameId = requestAnimationFrame(animate);
+		}
+
+		// 1. IntersectionObserver - only animate when visible
+		const observer = new IntersectionObserver(
+			(entries) => {
+				isVisible = entries[0].isIntersecting;
+			},
+			{ threshold: 0 }
+		);
+		observer.observe(svgElement);
+
+		// 2. Pause animation during scroll
+		function handleScroll() {
+			isScrolling = true;
+			clearTimeout(scrollTimeout);
+			scrollTimeout = setTimeout(() => {
+				isScrolling = false;
+			}, 150);
+		}
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		// Start animation loop
+		animationFrameId = requestAnimationFrame(animate);
+
+		// Cleanup on unmount
+		return () => {
+			observer.disconnect();
+			window.removeEventListener('scroll', handleScroll);
+			clearTimeout(scrollTimeout);
+			cancelAnimationFrame(animationFrameId);
+		};
 	});
 </script>
 
-<svg class="blob {className}" viewBox="0 0 200 200" width="100%" height="100%">
+<svg
+	bind:this={svgElement}
+	class="blob {className}"
+	viewBox="0 0 200 200"
+	width="100%"
+	height="100%"
+>
 	<defs>
 		<linearGradient id={gradientId} gradientTransform={`rotate(${gradientAngle}deg)`}>
 			<stop bind:this={gradientStop1} offset="0%" />
@@ -201,6 +254,9 @@
 
 <style>
 	.blob {
+		/* Promote to own compositor layer for smoother animation */
+		will-change: contents;
+		contain: layout style paint;
 		aspect-ratio: 1 / 1;
 		pointer-events: none;
 	}

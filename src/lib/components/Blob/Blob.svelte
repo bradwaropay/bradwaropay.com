@@ -35,9 +35,6 @@
 	// Animation state
 	let isReady = $state(false);
 	let prefersReducedMotion = false;
-	let isVisible = false;
-	let isScrolling = false;
-	let scrollTimeout: ReturnType<typeof setTimeout>;
 	let animationFrameId: number;
 
 	function formatPoints(points: Array<{ x: number; y: number }>, close: boolean): number[] {
@@ -236,43 +233,22 @@
 			}
 		}
 
-		function updateAnimationState() {
-			if (isVisible && !isScrolling) {
-				startAnimation();
-			} else {
-				stopAnimation();
-			}
-		}
-
-		// IntersectionObserver - track visibility
+		// IntersectionObserver - start/stop animation based on visibility only
 		const observer = new IntersectionObserver(
 			(entries) => {
-				isVisible = entries[0].isIntersecting;
-				updateAnimationState();
+				if (entries[0].isIntersecting) {
+					startAnimation();
+				} else {
+					stopAnimation();
+				}
 			},
 			{ threshold: 0 }
 		);
 		observer.observe(svgElement);
 
-		// Pause animation during scroll
-		function handleScroll() {
-			if (!isScrolling) {
-				isScrolling = true;
-				updateAnimationState();
-			}
-			clearTimeout(scrollTimeout);
-			scrollTimeout = setTimeout(() => {
-				isScrolling = false;
-				updateAnimationState();
-			}, 150);
-		}
-		window.addEventListener('scroll', handleScroll, { passive: true });
-
 		// Cleanup on unmount
 		return () => {
 			observer.disconnect();
-			window.removeEventListener('scroll', handleScroll);
-			clearTimeout(scrollTimeout);
 			stopAnimation();
 		};
 	});

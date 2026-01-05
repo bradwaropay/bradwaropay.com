@@ -1,19 +1,22 @@
 <script lang="ts">
-	import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
 	import type { Snippet } from 'svelte';
-	import Container from '$lib/components/Container/Container.svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	import Container from '$lib/components/Container/Container.svelte';
+	import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
+
+	interface Props extends HTMLAttributes<HTMLDivElement> {
 		withBackground?: boolean;
 		class?: string;
 		children?: Snippet;
 	}
 
-	let { withBackground = false, class: className, children }: Props = $props();
+	let { withBackground = false, class: className = '', children, ...restProps }: Props = $props();
 </script>
 
 <div
 	class="staggered-content {className} {withBackground ? 'staggered-content--with-background' : ''}"
+	{...restProps}
 >
 	<FullBleed>
 		<Container>

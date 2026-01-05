@@ -1,9 +1,11 @@
 <script lang="ts">
-	import Container from '$lib/components/Container/Container.svelte';
-	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
+	import Container from '$lib/components/Container/Container.svelte';
+
+	interface Props extends HTMLAttributes<HTMLElement> {
 		title?: string;
 		link?: {
 			label: string;
@@ -13,18 +15,18 @@
 		children?: Snippet;
 	}
 
-	const { title, link, children, class: className }: Props = $props();
+	const { title, link, children, class: className = '', ...restProps }: Props = $props();
 	const hasLink = link ? ' titled-section--has-link' : '';
 </script>
 
-<section class="titled-section {hasLink} {className}">
+<section class="titled-section {hasLink} {className}" {...restProps}>
 	<Container>
 		{#if title}
 			<h2 class="title"><span class="title-background">{title}</span></h2>
 		{/if}
 		{@render children?.()}
 		{#if link}
-			<BlockLink href={link.href} label={link.label} className="link" />
+			<BlockLink class="link" href={link.href} label={link.label} />
 		{/if}
 	</Container>
 </section>

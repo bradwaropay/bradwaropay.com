@@ -1,17 +1,21 @@
 <script lang="ts">
-	import Container from '../Container/Container.svelte';
-	import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
+
+	import Container from '../Container/Container.svelte';
+
+	interface Props extends HTMLAttributes<HTMLElement> {
 		title: string;
-		children: Snippet;
+		class?: string;
+		children?: Snippet;
 	}
 
-	const { title, children }: Props = $props();
+	const { title, children, class: className = '', ...restProps }: Props = $props();
 </script>
 
-<section class="titled-page">
+<section class="titled-page {className}" {...restProps}>
 	<Container>
 		<header class="header">
 			<FullBleed class="background">

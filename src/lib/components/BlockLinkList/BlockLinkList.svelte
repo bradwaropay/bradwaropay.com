@@ -1,17 +1,20 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
 	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
 
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLUListElement> {
 		links: { href: string; label: string }[];
 		wrap?: boolean;
-		className?: string;
+		class?: string;
 	}
 
-	const { links, wrap, className }: Props = $props();
+	const { links, wrap, class: className = '', ...restProps }: Props = $props();
+
 	const hasWrap = wrap ? 'wrap' : 'nowrap';
 </script>
 
-<ul class="block-link-list {className}" style="flex-wrap: {hasWrap}">
+<ul style:flex-wrap={hasWrap} class="block-link-list {className}" {...restProps}>
 	{#each links as link}
 		<li>
 			<BlockLink arrows="none" href={link.href} label={link.label} />

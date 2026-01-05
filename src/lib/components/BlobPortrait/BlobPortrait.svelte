@@ -1,19 +1,40 @@
 <script lang="ts">
-	import Blob from '$lib/components/Blob/Blob.svelte';
-	import portrait from '$lib/images/portrait.webp';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
-		className?: string;
+	import Blob from '$lib/components/Blob/Blob.svelte';
+	import Portrait from '$lib/components/Portrait/Portrait.svelte';
+
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		class?: string;
 	}
 
-	let { className }: Props = $props();
+	let { class: className = '', ...restProps }: Props = $props();
 </script>
 
-<div class="blob-portrait {className}">
-	<Blob gradientStart="dodgerblue" gradientEnd="gainsboro" gradientAngle={-45} speed={1} />
-	<Blob gradientStart="gainsboro" gradientEnd="dodgerblue" gradientAngle={45} speed={1} />
-	<Blob gradientStart="dodgerblue" gradientEnd="gainsboro" gradientAngle={180} speed={1} />
-	<img class="portrait" src={portrait} alt="Brad Waropay Portrait" />
+<div class="blob-portrait {className}" {...restProps}>
+	<Blob
+		gradientAngle={0}
+		gradientEnd="var(--color-page)"
+		gradientStart="var(--color-page-accent)"
+		opacity={0.75}
+		speed={1}
+	/>
+	<Blob
+		gradientAngle={0}
+		gradientEnd="var(--color-page-accent)"
+		gradientStart="var(--color-page)"
+		opacity={0.75}
+		speed={1}
+	/>
+	<Blob
+		gradientAngle={90}
+		gradientEnd="var(--color-page)"
+		gradientStart="var(--color-page-accent)"
+		opacity={0.75}
+		speed={1}
+	/>
+
+	<Portrait />
 </div>
 
 <style>
@@ -27,16 +48,10 @@
 			top: calc(50%);
 			left: 50%;
 			transform: translate(-50%, -50%) scale(1.5);
-			opacity: 0.75;
 		}
-	}
 
-	.portrait {
-		mix-blend-mode: multiply;
-		border-radius: var(--border-radius-circle);
-		aspect-ratio: 1/1;
-		width: 100%;
-		object-fit: cover;
-		object-position: center;
+		:global(.portrait) {
+			mix-blend-mode: multiply;
+		}
 	}
 </style>

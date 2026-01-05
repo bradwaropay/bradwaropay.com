@@ -1,27 +1,24 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { createNoise2D } from 'simplex-noise';
+	import { onMount } from 'svelte';
+	import type { SVGAttributes } from 'svelte/elements';
 
-	interface Props {
-		className?: string;
-		/** Animation speed on a scale of 1-10, where 5 is the default */
-		speed?: number;
-		color?: string;
-		/** Start color of the gradient (e.g., "#ff0000" or "rgb(255, 0, 0)"). If not provided, colors will be generated dynamically. */
+	interface Props extends SVGAttributes<SVGSVGElement> {
 		gradientStart?: string;
-		/** End color of the gradient (e.g., "#0000ff" or "rgb(0, 0, 255)"). If not provided, colors will be generated dynamically. */
 		gradientEnd?: string;
-		/** Children content to render inside the blob container */
 		gradientAngle?: number;
+		opacity?: number;
+		speed?: number;
 	}
 
 	const {
-		className,
-		speed = 2,
-		color,
 		gradientStart,
 		gradientEnd,
-		gradientAngle = 0
+		gradientAngle = 0,
+		opacity = 1,
+		speed = 2,
+		class: className = '',
+		...restProps
 	}: Props = $props();
 
 	let svgElement: SVGSVGElement;
@@ -29,10 +26,8 @@
 	let gradientStop1: SVGStopElement;
 	let gradientStop2: SVGStopElement;
 
-	// Generate a unique gradient ID for this component instance
 	const gradientId = `blob-gradient-${crypto.randomUUID()}`;
 
-	// Animation state
 	let isReady = $state(false);
 	let prefersReducedMotion = false;
 	let animationFrameId: number;
@@ -108,19 +103,14 @@
 	onMount(() => {
 		if (!svgElement || !pathElement || !gradientStop1 || !gradientStop2) return;
 
-		// Check for reduced motion preference
 		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		const noise = createNoise2D();
 
-		// How many points do we want
 		const numPoints = 6;
-		// Used to equally space each point around the circle
 		const angleStep = (Math.PI * 2) / numPoints;
-		// The radius of our circle
 		const rad = 75;
 
-		// Keep track of our points
 		const points: Array<{
 			x: number;
 			y: number;
@@ -130,7 +120,6 @@
 			noiseOffsetY: number;
 		}> = [];
 
-		// Create the points
 		for (let i = 1; i <= numPoints; i++) {
 			const angle = i * angleStep;
 			const x = 100 + Math.cos(angle) * rad;
@@ -146,20 +135,14 @@
 			});
 		}
 
-		// How fast we progress through "time"
-		// Speed is on a scale of 1-10, where 5 is the default (0.005)
-		// Convert to internal noiseStep value: speed * 0.001
 		let noiseStep = speed * 0.001;
-		// Used to animate the gradient
 		let hueNoiseOffset = 0;
 
-		// Set static colors if provided, otherwise they'll be animated
 		if (gradientStart && gradientEnd) {
 			gradientStop1.setAttribute('stop-color', gradientStart);
-			gradientStop2.setAttribute('stop-color', gradientEnd);
+			gradientStop2.setAttribute('stop-color', gradientEnd ?? gradientStart);
 		}
 
-		// Apply initial noise to get a unique random shape for each blob
 		for (let point of points) {
 			const nX = noise(point.noiseOffsetX, point.noiseOffsetX);
 			const nY = noise(point.noiseOffsetY, point.noiseOffsetY);
@@ -167,49 +150,38 @@
 			point.y = map(nY, -1, 1, point.originY - 20, point.originY + 20);
 		}
 
-		// Render initial blob state
 		const initialPath = spline(points, 1, true);
+
 		pathElement.setAttribute('d', initialPath);
 
-		// Fade in after browser paints initial state
-		// Double rAF ensures the opacity:0 frame is painted before transitioning
 		requestAnimationFrame(() => {
 			requestAnimationFrame(() => {
 				isReady = true;
 			});
 		});
 
-		// If user prefers reduced motion, skip the morphing animation
-		if (prefersReducedMotion) {
+		if (speed === 0 || prefersReducedMotion) {
 			return;
 		}
 
 		function animate() {
-			// Create a smooth, continuous path from the points using spline
 			const path = spline(points, 1, true);
 			pathElement.setAttribute('d', path);
 
-			// For every point...
 			for (let point of points) {
-				// Update noise values
 				const nX = noise(point.noiseOffsetX, point.noiseOffsetX);
 				const nY = noise(point.noiseOffsetY, point.noiseOffsetY);
-				// Map this noise value to a new position, somewhere between -20 and 20
 				const x = map(nX, -1, 1, point.originX - 20, point.originX + 20);
 				const y = map(nY, -1, 1, point.originY - 20, point.originY + 20);
 
-				// Update the point's current coordinates
 				point.x = x;
 				point.y = y;
 
-				// Progress the point's x, y values through "time"
 				point.noiseOffsetX += noiseStep;
 				point.noiseOffsetY += noiseStep;
 			}
 
-			// Update gradient colors (only if not using static colors)
-			if (!gradientStart || !gradientEnd) {
-				// Generate animated colors
+			if (!gradientStart) {
 				hueNoiseOffset += noiseStep / 6;
 				const hueNoise = noise(hueNoiseOffset, hueNoiseOffset);
 				const hue = map(hueNoise, -1, 1, 0, 360);
@@ -222,7 +194,7 @@
 		}
 
 		function startAnimation() {
-			if (animationFrameId) return; // Already running
+			if (animationFrameId) return;
 			animationFrameId = requestAnimationFrame(animate);
 		}
 
@@ -233,7 +205,6 @@
 			}
 		}
 
-		// IntersectionObserver - start/stop animation based on visibility only
 		const observer = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].isIntersecting) {
@@ -246,7 +217,6 @@
 		);
 		observer.observe(svgElement);
 
-		// Cleanup on unmount
 		return () => {
 			observer.disconnect();
 			stopAnimation();
@@ -257,24 +227,28 @@
 <svg
 	bind:this={svgElement}
 	class="blob {className}"
-	style:opacity={isReady ? 1 : 0}
+	height="100%"
 	viewBox="0 0 200 200"
 	width="100%"
-	height="100%"
+	{...restProps}
 >
 	<defs>
-		<linearGradient id={gradientId} gradientTransform={`rotate(${gradientAngle}deg)`}>
+		<linearGradient id={gradientId} gradientTransform={`rotate(${gradientAngle})`}>
 			<stop bind:this={gradientStop1} offset="0%" />
 			<stop bind:this={gradientStop2} offset="100%" />
 		</linearGradient>
 	</defs>
-	<path bind:this={pathElement} d="" fill={color ? color : `url(#${gradientId})`}></path>
+	<path
+		bind:this={pathElement}
+		d=""
+		fill={gradientEnd ? `url(#${gradientId})` : gradientStart}
+		opacity={isReady ? opacity : 0}
+	></path>
 </svg>
 
 <style>
 	.blob {
 		transition: opacity 0.6s ease-out;
-		/* Promote to own compositor layer for smoother animation */
 		will-change: contents;
 		contain: layout style paint;
 		aspect-ratio: 1 / 1;

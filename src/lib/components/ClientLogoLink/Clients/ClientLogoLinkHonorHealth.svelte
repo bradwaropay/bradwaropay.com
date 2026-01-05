@@ -3,10 +3,10 @@
 </script>
 
 <ClientLogoLink href="https://www.honorhealth.com" label="HonorHealth">
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 23.61" width="100%" height="100%">
+	<svg height="100%" viewBox="0 0 100 23.61" width="100%" xmlns="http://www.w3.org/2000/svg">
 		<polygon
-			points="51.11 4.44 51.11 0 0 0 0 19.17 51.11 19.17 51.11 23.61 100 23.61 100 4.44 51.11 4.44"
 			fill="#72256d"
+			points="51.11 4.44 51.11 0 0 0 0 19.17 51.11 19.17 51.11 23.61 100 23.61 100 4.44 51.11 4.44"
 		/>
 		<path
 			d="M6.57,7.73h1.44v3.29h3.84v-3.29h1.44v8.19h-1.44v-3.61h-3.84v3.61h-1.44s0-8.19,0-8.19Z"

@@ -1,22 +1,26 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
 	import ClientLogoLinkAbbvie from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkAbbvie.svelte';
 	import ClientLogoLinkAmericasTestKitchen from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkAmericasTestKitchen.svelte';
 	import ClientLogoLinkElectrolux from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkElectrolux.svelte';
 	import ClientLogoLinkFender from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkFender.svelte';
-	import ClientLogoLinkGenentech from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkGenentech.svelte';
 	import ClientLogoLinkGalileo from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkGalileo.svelte';
+	import ClientLogoLinkGenentech from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkGenentech.svelte';
 	import ClientLogoLinkHonorHealth from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkHonorHealth.svelte';
 	import ClientLogoLinkMeltmedia from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkMeltmedia.svelte';
-	import ClientLogoLinkTheDyrt from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkTheDyrt.svelte';
 	import ClientLogoLinkMicrochip from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkMicrochip.svelte';
+	import ClientLogoLinkScholastic from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkScholastic.svelte';
+	import ClientLogoLinkTheDyrt from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkTheDyrt.svelte';
+	import ClientLogoLinkTysonFoods from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkTysonFoods.svelte';
 	import Container from '$lib/components/Container/Container.svelte';
 	import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
-	import ClientLogoLinkScholastic from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkScholastic.svelte';
-	import ClientLogoLinkTysonFoods from '$lib/components/ClientLogoLink/Clients/ClientLogoLinkTysonFoods.svelte';
 
-	interface Props {
-		className?: string;
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		class?: string;
 	}
+
+	const { class: className, ...restProps }: Props = $props();
 
 	const ClientLogos = [
 		ClientLogoLinkAbbvie,
@@ -34,7 +38,7 @@
 	];
 </script>
 
-<div class="client-list">
+<div class="client-logos {className}" {...restProps}>
 	<FullBleed>
 		<Container>
 			<ul class="list">
@@ -49,7 +53,7 @@
 </div>
 
 <style lang="scss">
-	.client-list {
+	.client-logos {
 		:global(.full-bleed) {
 			background: var(--background-diagonal-lines);
 		}

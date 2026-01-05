@@ -1,25 +1,26 @@
 <script lang="ts">
-	import Container from '$lib/components/Container/Container.svelte';
-	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
-	import IconLinkList from '$lib/components/IconLinkList/IconLinkList.svelte';
-	import BlobPortrait from '$lib/components/BlobPortrait/BlobPortrait.svelte';
 	import {
-		IconMail,
 		IconBrandBluesky,
 		IconBrandCodepen,
-		IconBrandGithub
+		IconBrandGithub,
+		IconMail
 	} from '@tabler/icons-svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
-		class?: string;
+	import BlobPortrait from '$lib/components/BlobPortrait/BlobPortrait.svelte';
+	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
+	import Container from '$lib/components/Container/Container.svelte';
+	import IconLinkList from '$lib/components/IconLinkList/IconLinkList.svelte';
+
+	interface Props extends HTMLAttributes<HTMLElement> {
 		link?: {
 			label: string;
 			href: string;
 		};
-		element?: HTMLElement;
+		class?: string;
 	}
 
-	let { class: className, link, element = $bindable() }: Props = $props();
+	let { class: className = '', link, ...restProps }: Props = $props();
 
 	const socialLinks = [
 		{ icon: IconMail, label: 'Email', href: 'mailto:brad.waropay@gmail.com' },
@@ -29,8 +30,8 @@
 	];
 </script>
 
-<section bind:this={element} class="intro-hero {className}">
-	<Container class="intro-container">
+<section class="intro-hero {className}" {...restProps}>
+	<Container>
 		<h1 class="heading">
 			Hi, I'm <span class="heading-name">Brad <br />Waropay</span>
 		</h1>
@@ -39,9 +40,9 @@
 				I make building products as seamless and enjoyable as using them
 			</span>
 		</p>
-		<IconLinkList className="social-links" links={socialLinks} withBackground />
+		<IconLinkList class="social-links" links={socialLinks} withBackground />
 		{#if link}
-			<BlockLink className="link" label={link.label} href={link.href} />
+			<BlockLink class="link" arrows="none" href={link.href} label={link.label} />
 		{/if}
 		<BlobPortrait />
 	</Container>
@@ -59,7 +60,7 @@
 			0 var(--spacing-macro-lg);
 		overflow: hidden;
 
-		:global(.intro-container) {
+		:global(.container) {
 			position: relative;
 		}
 

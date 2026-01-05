@@ -1,16 +1,17 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
-		element?: 'div' | 'section' | 'article';
+	interface Props extends HTMLAttributes<HTMLDivElement> {
+		element?: 'div' | 'section';
 		class?: string;
 		children?: Snippet;
 	}
 
-	let { element = 'div', class: className, children }: Props = $props();
+	let { element = 'div', class: className = '', children, ...restProps }: Props = $props();
 </script>
 
-<svelte:element this={element} class={'full-bleed ' + (className ?? '')}>
+<svelte:element this={element} class="full-bleed {className}" {...restProps}>
 	{@render children?.()}
 </svelte:element>
 

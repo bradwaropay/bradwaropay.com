@@ -1,16 +1,17 @@
 <script lang="ts">
-	interface Props {
-		href: string;
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
+
+	interface Props extends HTMLAnchorAttributes {
 		label: string;
-		className?: string;
-		invert?: boolean;
 		arrows?: 'before' | 'after' | 'none';
+		invert?: boolean;
+		class?: string;
 	}
 
-	const { href, label, className, invert, arrows = 'after' }: Props = $props();
+	const { label, class: className = '', invert, arrows = 'after', ...restProps }: Props = $props();
 </script>
 
-<a class="block-link {invert ? 'inverted' : ''} {className}" {href}>
+<a class="block-link {invert ? 'inverted' : ''} {className}" {...restProps}>
 	{#if arrows === 'before'}
 		«
 	{/if}

@@ -3,7 +3,7 @@
 </script>
 
 <ClientLogoLink href="https://www.meltmedia.com" label="meltmedia">
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 15.81" width="100%" height="100%">
+	<svg height="100%" viewBox="0 0 100 15.81" width="100%" xmlns="http://www.w3.org/2000/svg">
 		<path
 			d="M21.86,4.05c.1,1.7-1.43,3.43-3.13,3.67-2.83.4-1.67,2.33-1.47,4.2-.33,5.6-8.6,4.83-7.8-.73.2-1.37,1.17-2.5,2.43-3,.67-.2,1.37-.27,1.97-.67,1.63-1.3-.67-3.23.5-5.27,1.7-3.83,7.73-2.47,7.5,1.8Z"
 			fill="#05b4e0"

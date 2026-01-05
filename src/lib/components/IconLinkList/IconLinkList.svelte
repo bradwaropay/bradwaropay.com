@@ -1,20 +1,22 @@
 <script lang="ts">
-	import IconLink from '$lib/components/IconLink/IconLink.svelte';
 	import type { Icon } from '@tabler/icons-svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	import IconLink from '$lib/components/IconLink/IconLink.svelte';
+
+	interface Props extends HTMLAttributes<HTMLUListElement> {
 		links: { icon: Icon; label: string; href: string }[];
 		withBackground?: boolean;
-		className?: string;
+		class?: string;
 	}
 
-	const { links, withBackground, className }: Props = $props();
+	const { links, withBackground, class: className = '', ...restProps }: Props = $props();
 </script>
 
-<ul class="icon-link-list {className}">
+<ul class="icon-link-list {className}" {...restProps}>
 	{#each links as link}
 		<li>
-			<IconLink icon={link.icon} label={link.label} href={link.href} {withBackground} />
+			<IconLink href={link.href} icon={link.icon} label={link.label} {withBackground} />
 		</li>
 	{/each}
 </ul>

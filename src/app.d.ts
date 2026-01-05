@@ -9,7 +9,7 @@ declare global {
 		// interface Platform {}
 	}
 
-	interface Note {
+	interface Note extends HTMLAttributes<HTMLElement> {
 		slug: string;
 		image: string;
 		title: string;

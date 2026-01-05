@@ -1,24 +1,26 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
 	import Container from '$lib/components/Container/Container.svelte';
 
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLElement> {
 		class?: string;
 	}
 
-	const { class: className }: Props = $props();
+	const { class: className = '', ...restProps }: Props = $props();
 
 	const year = new Date().getFullYear();
 	const blueskyUrl = 'https://bsky.app/profile/bradwaropay.dev';
 	const rssUrl = '/feed';
 </script>
 
-<footer class="site-footer {className}">
+<footer class="site-footer {className}" {...restProps}>
 	<div class="divider"></div>
 	<Container>
 		<p>&copy; {year} Brad Waropay</p>
 		<p>
-			Follow me on <a href={blueskyUrl} class="is-inverted">BlueSky</a> or
-			<a href={rssUrl} class="is-inverted">RSS</a>
+			Follow me on <a class="is-inverted" href={blueskyUrl}>BlueSky</a> or
+			<a class="is-inverted" href={rssUrl}>RSS</a>
 		</p>
 	</Container>
 </footer>

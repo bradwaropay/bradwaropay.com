@@ -3,8 +3,8 @@
 </script>
 
 <ClientLogoLink href="https://www.americastestkitchen.com" label="America's Test Kitchen">
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 36.67" width="100%" height="100%">
-		<rect width="100" height="36.67" fill="#d63d27" />
+	<svg height="100%" viewBox="0 0 100 36.67" width="100%" xmlns="http://www.w3.org/2000/svg">
+		<rect fill="#d63d27" height="36.67" width="100" />
 		<path d="M12.4,16.77h6.17v1.53h-2.17v11.6h-1.83v-11.6h-2.17v-1.53h0Z" fill="#fff" />
 		<path
 			d="M19.73,16.77h4.93v1.53h-3.13v4.1h2.93v1.53h-2.93v4.43h3.13v1.53h-4.93v-13.13h0Z"

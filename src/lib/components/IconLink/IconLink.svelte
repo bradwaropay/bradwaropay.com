@@ -1,23 +1,28 @@
 <script lang="ts">
 	import type { Icon } from '@tabler/icons-svelte';
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-	interface Props {
+	interface Props extends HTMLAnchorAttributes {
 		icon: Icon;
 		label: string;
-		href: string;
 		className?: string;
 		withBackground?: boolean;
 	}
 
-	const { icon: IconComponent, label, href, className, withBackground }: Props = $props();
+	const {
+		icon: IconComponent,
+		label,
+		withBackground,
+		class: className = '',
+		...restProps
+	}: Props = $props();
+
+	const withBackgroundClass = withBackground ? 'with-background' : '';
 </script>
 
-<a
-	class="icon-link {className} {withBackground ? 'with-background' : ''}"
-	{href}
-	target="_blank"
-	aria-label={label}><IconComponent stroke="0.09375rem" /></a
->
+<a class="icon-link {withBackgroundClass} {className}" aria-label={label} {...restProps}>
+	<IconComponent stroke="0.09375rem" />
+</a>
 
 <style>
 	.icon-link {

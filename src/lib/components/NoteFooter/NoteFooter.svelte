@@ -1,24 +1,27 @@
 <script lang="ts">
-	import Container from '$lib/components/Container/Container.svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
+
 	import BlockLink from '$lib/components/BlockLink/BlockLink.svelte';
+	import Container from '$lib/components/Container/Container.svelte';
 	import portrait from '$lib/images/portrait.webp';
 
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLElement> {
 		previousNote?: string;
 		nextNote?: string;
+		class?: string;
 	}
 
-	const { previousNote, nextNote }: Props = $props();
+	const { previousNote, nextNote, class: className = '', ...restProps }: Props = $props();
 </script>
 
-<footer class="note-footer">
+<footer class="note-footer {className}" {...restProps}>
 	<Container>
 		<nav class="navigation">
-			<BlockLink href="/notes" label="Back to notes" arrows="none" />
+			<BlockLink arrows="none" href="/notes" label="Back to notes" />
 			{#if previousNote || nextNote}
 				<div class="pagination">
 					{#if previousNote}
-						<BlockLink href={`/notes/${previousNote}`} label="Previous" arrows="before" />
+						<BlockLink arrows="before" href={`/notes/${previousNote}`} label="Previous" />
 					{/if}
 					{#if nextNote}
 						<BlockLink href={`/notes/${nextNote}`} label="Next" />
@@ -27,7 +30,7 @@
 			{/if}
 		</nav>
 		<div class="author">
-			<img src={portrait} alt="Brad Waropay" class="image" />
+			<img class="image" alt="Brad Waropay" src={portrait} />
 			<p class="byline">
 				<strong>Hi, I'm Brad Waropay.</strong> I'm a DesignOps and Design Systems leader with 15+
 				years bridging design, engineering, and product. <a href="/about">Let's work together</a>.

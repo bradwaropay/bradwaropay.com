@@ -1,22 +1,24 @@
 <script lang="ts">
-	import WorkCard from '$lib/components/WorkCard/WorkCard.svelte';
-	import MessageAction from '$lib/components/MessageAction/MessageAction.svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	import MessageAction from '$lib/components/MessageAction/MessageAction.svelte';
+	import WorkCard from '$lib/components/WorkCard/WorkCard.svelte';
+
+	interface Props extends HTMLAttributes<HTMLUListElement> {
 		work: Work[];
-		className?: string;
+		class?: string;
 	}
 
-	const { work, className }: Props = $props();
+	const { work, class: className = '', ...restProps }: Props = $props();
 	const message = "There's nothing here yet.";
 	const action =
 		'Check out my <a href="/notes">notes</a> or learn more <a href="/about">about me</a>.';
 </script>
 
 {#if !work.length}
-	<MessageAction {message} {action} />
+	<MessageAction {action} {message} />
 {:else}
-	<ul class="work-card-list {className}">
+	<ul class="work-card-list {className}" {...restProps}>
 		{#each work as workItem}
 			<li class="list-item">
 				<WorkCard {...workItem} />

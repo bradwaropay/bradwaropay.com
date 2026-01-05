@@ -1,17 +1,23 @@
 <script lang="ts">
-	interface Props {
-		href: string;
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	interface Props extends HTMLAttributes<HTMLHeadingElement> {
 		title: string;
-		className?: string;
+		href?: string;
+		class?: string;
 	}
 
-	const { href, title, className }: Props = $props();
+	const { title, href, class: className = '', ...restProps }: Props = $props();
 </script>
 
-<h3 class="title {className}">
-	<a class="link" {href}>
-		<span class="link-text">{title}</span>
-	</a>
+<h3 class="title {className}" {...restProps}>
+	{#if href}
+		<a class="link" {href}>
+			{title}
+		</a>
+	{:else}
+		{title}
+	{/if}
 </h3>
 
 <style lang="scss">
@@ -33,7 +39,6 @@
 			$breakpointContainer
 		);
 		font-variation-settings: var(--font-variation-bold);
-
 		text-decoration-line: none;
 		text-decoration-style: solid;
 		text-decoration-color: transparent;

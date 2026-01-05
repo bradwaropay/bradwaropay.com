@@ -1,13 +1,15 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	import BlockLinkList from '$lib/components/BlockLinkList/BlockLinkList.svelte';
 	import Container from '$lib/components/Container/Container.svelte';
 	import SiteLogoLink from '$lib/components/SiteLogoLink/SiteLogoLink.svelte';
-	import BlockLinkList from '$lib/components/BlockLinkList/BlockLinkList.svelte';
 
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLElement> {
 		class?: string;
 	}
 
-	const { class: className }: Props = $props();
+	const { class: className = '', ...restProps }: Props = $props();
 
 	const links = [
 		{ label: 'About', href: '/about' },
@@ -16,7 +18,7 @@
 	];
 </script>
 
-<header class="site-header {className}">
+<header class="site-header {className}" {...restProps}>
 	<Container>
 		<nav class="nav">
 			<SiteLogoLink />

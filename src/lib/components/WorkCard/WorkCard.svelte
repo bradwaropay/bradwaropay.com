@@ -2,22 +2,31 @@
 	import CardTitle from '$lib/components/CardTitle/CardTitle.svelte';
 
 	interface Props extends Work {
-		className?: string;
+		class?: string;
 	}
 
-	let { slug, image, title, client, clientLink, description, className }: Props = $props();
+	let {
+		slug,
+		image,
+		title,
+		client,
+		clientLink,
+		description,
+		class: className = '',
+		...restProps
+	}: Props = $props();
 </script>
 
-<article class="work-article {className}">
-	<a href={`/work/${slug}`} class="image-link">
-		<img src={image} alt={title} class="image" />
+<article class="work-article {className}" {...restProps}>
+	<a class="image-link" href={`/work/${slug}`}>
+		<img class="image" alt={title} src={image} />
 	</a>
 	<div class="details">
 		<hgroup>
 			<CardTitle href={`/work/${slug}`} {title} />
 			<p class="client">
 				{#if clientLink}
-					<a href={clientLink} class="client-link">{client}</a>
+					<a class="client-link" href={clientLink}>{client}</a>
 				{:else}
 					{client}
 				{/if}
@@ -77,7 +86,6 @@
 		font-variation-settings: var(--font-variation-semi-bold);
 	}
 
-	// TODO: Consider using Content component for description
 	.description {
 		margin-top: var(--spacing-macro-xs);
 		max-width: $layoutWidthContent;

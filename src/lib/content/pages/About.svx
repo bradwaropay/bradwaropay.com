@@ -1,12 +1,13 @@
 <script>
-    import BlockLinkList from '$lib/components/BlockLinkList/BlockLinkList.svelte';
-    import AboutClients from '$lib/components/AboutClients/AboutClients.svelte';   
-    import StaggeredContent from '$lib/components/StaggeredContent/StaggeredContent.svelte';
     import { IconAccessible, IconAffiliate, IconBlocks, IconGavel,  } from '@tabler/icons-svelte';
+
+    import BlockLinkList from '$lib/components/BlockLinkList/BlockLinkList.svelte';
+    import ClientLogos from '$lib/components/ClientLogos/ClientLogos.svelte';   
+    import Container from '$lib/components/Container/Container.svelte';
+    import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
     import IconTitledEntry from '$lib/components/IconTitledEntry/IconTitledEntry.svelte';
     import MessageAction from '$lib/components/MessageAction/MessageAction.svelte';
-    import FullBleed from '$lib/components/FullBleed/FullBleed.svelte';
-    import Container from '$lib/components/Container/Container.svelte';
+    import StaggeredContent from '$lib/components/StaggeredContent/StaggeredContent.svelte';
 </script>
 
 ## Let's Create!
@@ -31,7 +32,7 @@ work for teams, not against them, so they can focus on their craft and solve rea
 
 ### I've worked with&hellip;
 
-<AboutClients />
+<ClientLogos />
 
 ## How Can I Help?
 

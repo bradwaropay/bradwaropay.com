@@ -1,15 +1,17 @@
 <script lang="ts">
-	interface Props {
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	interface Props extends HTMLAttributes<HTMLParagraphElement> {
 		message?: string;
 		action?: string;
 		class?: string;
 	}
 
-	const { message, action, class: className }: Props = $props();
+	const { message, action, class: className = '', ...restProps }: Props = $props();
 </script>
 
-<p class="message-action {className}">
-	<span><strong>{message}</strong></span>
+<p class="message-action {className}" {...restProps}>
+	<strong>{message}</strong>
 	{#if action}
 		<span>
 			{@html action}

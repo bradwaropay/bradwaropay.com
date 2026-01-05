@@ -1,16 +1,16 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-	interface Props {
-		href: string;
+	interface Props extends HTMLAnchorAttributes {
 		label: string;
 		children: Snippet;
 	}
 
-	const { href, label, children }: Props = $props();
+	const { label, children, ...restProps }: Props = $props();
 </script>
 
-<a {href} target="_blank" aria-label={label} class="client-logo-link">
+<a class="client-logo-link" aria-label={label} {...restProps}>
 	{@render children()}
 </a>
 
